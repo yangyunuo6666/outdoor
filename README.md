@@ -5,7 +5,7 @@
 # outdoor
 + nvm 安装14.20.0Node失败：
   - 从node管理下载包，解压后，放在nvm安装目录下。
-  - (官网)[https://nodejs.org/download/release/]
+  - [官网](https://nodejs.org/download/release/)
   - 缺失sass：
     - npm install node-sass@^4.14.1 --registry=https://registry.npmmirror.com --sass_binary_site=https://npmmirror.com/mirrors/node-sass/
     - npm install node-sass@^3.4.4 --registry=https://registry.npmmirror.com --sass_binary_site=https://npmmirror.com/mirrors/node-sass/
