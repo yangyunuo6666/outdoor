@@ -11,6 +11,8 @@ import java.util.Map;
 import java.util.Random;
 import java.util.UUID;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,18 +35,17 @@ import com.entity.EIException;
 import com.service.ConfigService;
 import com.utils.R;
 
-/**
- * 上传文件映射表
- */
+
+@Api(tags = "上传文件映射表接口")
 @RestController
 @RequestMapping("file")
 @SuppressWarnings({"unchecked","rawtypes"})
 public class FileController{
 	@Autowired
     private ConfigService configService;
-	/**
-	 * 上传文件
-	 */
+
+
+	@ApiOperation(value = "上传文件")
 	@RequestMapping("/upload")
 	public R upload(@RequestParam("file") MultipartFile file,String type) throws Exception {
 		if (file.isEmpty()) {
@@ -76,9 +77,8 @@ public class FileController{
 		return R.ok().put("file", fileName);
 	}
 	
-	/**
-	 * 下载文件
-	 */
+
+	@ApiOperation(value = "下载文件")
 	@IgnoreAuth
 	@RequestMapping("/download")
 	public ResponseEntity<byte[]> download(@RequestParam String fileName) {

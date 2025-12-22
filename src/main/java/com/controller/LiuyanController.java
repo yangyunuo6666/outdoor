@@ -7,6 +7,9 @@ import java.net.URL;
 import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.JSONObject;
 import java.util.*;
+
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.BeanUtils;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.web.context.ContextLoader;
@@ -32,12 +35,8 @@ import com.utils.PageUtils;
 import com.utils.R;
 import com.alibaba.fastjson.*;
 
-/**
- * 留言板
- * 后端接口
- * @author
- * @email
-*/
+
+@Api(tags = "留言板接口")
 @RestController
 @Controller
 @RequestMapping("/liuyan")
@@ -73,9 +72,7 @@ public class LiuyanController {
     private UsersService usersService;//管理员
 
 
-    /**
-    * 后端列表
-    */
+    @ApiOperation(value = "后端列表")
     @RequestMapping("/page")
     public R page(@RequestParam Map<String, Object> params, HttpServletRequest request){
         logger.debug("page方法:,,Controller:{},,params:{}",this.getClass().getName(),JSONObject.toJSONString(params));
@@ -96,9 +93,7 @@ public class LiuyanController {
         return R.ok().put("data", page);
     }
 
-    /**
-    * 后端详情
-    */
+    @ApiOperation(value = "后端详情")
     @RequestMapping("/info/{id}")
     public R info(@PathVariable("id") Long id, HttpServletRequest request){
         logger.debug("info方法:,,Controller:{},,id:{}",this.getClass().getName(),id);
@@ -123,9 +118,7 @@ public class LiuyanController {
 
     }
 
-    /**
-    * 后端保存
-    */
+    @ApiOperation(value = "后端保存")
     @RequestMapping("/save")
     public R save(@RequestBody LiuyanEntity liuyan, HttpServletRequest request){
         logger.debug("save方法:,,Controller:{},,liuyan:{}",this.getClass().getName(),liuyan.toString());
@@ -153,9 +146,7 @@ public class LiuyanController {
         }
     }
 
-    /**
-    * 后端修改
-    */
+    @ApiOperation(value = "后端修改")
     @RequestMapping("/update")
     public R update(@RequestBody LiuyanEntity liuyan, HttpServletRequest request) throws NoSuchFieldException, ClassNotFoundException, IllegalAccessException, InstantiationException {
         logger.debug("update方法:,,Controller:{},,liuyan:{}",this.getClass().getName(),liuyan.toString());
@@ -174,9 +165,7 @@ public class LiuyanController {
 
 
 
-    /**
-    * 删除
-    */
+    @ApiOperation(value = "删除")
     @RequestMapping("/delete")
     public R delete(@RequestBody Integer[] ids, HttpServletRequest request){
         logger.debug("delete:,,Controller:{},,ids:{}",this.getClass().getName(),ids.toString());
@@ -187,9 +176,7 @@ public class LiuyanController {
     }
 
 
-    /**
-     * 批量上传
-     */
+    @ApiOperation(value = "批量上传")
     @RequestMapping("/batchInsert")
     public R save( String fileName, HttpServletRequest request){
         logger.debug("batchInsert方法:,,Controller:{},,fileName:{}",this.getClass().getName(),fileName);
@@ -245,9 +232,7 @@ public class LiuyanController {
 
 
 
-    /**
-    * 前端列表
-    */
+    @ApiOperation(value = "前端列表")
     @IgnoreAuth
     @RequestMapping("/list")
     public R list(@RequestParam Map<String, Object> params, HttpServletRequest request){
@@ -264,9 +249,7 @@ public class LiuyanController {
         return R.ok().put("data", page);
     }
 
-    /**
-    * 前端详情
-    */
+    @ApiOperation(value = "前端详情")
     @RequestMapping("/detail/{id}")
     public R detail(@PathVariable("id") Long id, HttpServletRequest request){
         logger.debug("detail方法:,,Controller:{},,id:{}",this.getClass().getName(),id);
@@ -293,9 +276,7 @@ public class LiuyanController {
     }
 
 
-    /**
-    * 前端保存
-    */
+    @ApiOperation(value = "前端保存")
     @RequestMapping("/add")
     public R add(@RequestBody LiuyanEntity liuyan, HttpServletRequest request){
         logger.debug("add方法:,,Controller:{},,liuyan:{}",this.getClass().getName(),liuyan.toString());

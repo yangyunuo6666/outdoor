@@ -13,7 +13,7 @@
     <artifactId>equipmentzulinxitong</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>wanjuzulinxitpng</name>
-    <description>玩具租赁系统</description>
+    <description>露营设备租赁系统</description>
 
     <properties>
         <java.version>1.8</java.version>
@@ -36,6 +36,11 @@
             <artifactId>spring-boot-starter-jdbc</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+
         <!--访问静态资源-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -48,6 +53,24 @@
             <artifactId>spring-boot-devtools</artifactId>
             <scope>runtime</scope>
             <optional>true</optional>
+        </dependency>
+
+        <!-- api文档生成 -->
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <version>2.9.2</version>
+        </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+            <version>2.9.2</version>
+        </dependency>
+        <!--swagger_UI依赖Guava，故需引入-->
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>20.0</version>
         </dependency>
 
         <dependency>

@@ -8,6 +8,8 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 
 import com.service.UsersService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,10 +26,10 @@ import com.service.TokenService;
 import com.utils.MPUtil;
 import com.utils.PageUtils;
 import com.utils.R;
+import springfox.documentation.spring.web.readers.operation.ApiOperationReader;
 
-/**
- * 登录相关
- */
+
+@Api(tags="管理员接口")
 @RequestMapping("users")
 @RestController
 public class UsersController {
@@ -37,10 +39,11 @@ public class UsersController {
 	
 	@Autowired
 	private TokenService tokenService;
+    @Autowired
+    private ApiOperationReader apiOperationReader;
 
-	/**
-	 * 登录
-	 */
+	//登录
+	@ApiOperation(value="管理员登录",notes = "根据账户比对密码")
 	@IgnoreAuth
 	@PostMapping(value = "/login")
 	public R login(String username, String password, String captcha, HttpServletRequest request) {
@@ -55,10 +58,9 @@ public class UsersController {
 		r.put("userId",user.getId());
 		return r;
 	}
-	
-	/**
-	 * 注册
-	 */
+
+
+	@ApiOperation(value = "注册")
 	@IgnoreAuth
 	@PostMapping(value = "/register")
 	public R register(@RequestBody UsersEntity user){
@@ -70,18 +72,14 @@ public class UsersController {
         return R.ok();
     }
 
-	/**
-	 * 退出
-	 */
+	@ApiOperation(value = "退出")
 	@GetMapping(value = "logout")
 	public R logout(HttpServletRequest request) {
 		request.getSession().invalidate();
 		return R.ok("退出成功");
 	}
 
-	/**
-	 * 修改密码
-	 */
+	@ApiOperation(value = "修改密码")
 	@GetMapping(value = "/updatePassword")
 	public R updatePassword(String  oldPassword, String  newPassword, HttpServletRequest request) {
 		UsersEntity users = usersService.selectById((Integer)request.getSession().getAttribute("userId"));
@@ -98,10 +96,9 @@ public class UsersController {
 		usersService.updateById(users);
 		return R.ok();
 	}
-	
-	/**
-     * 密码重置
-     */
+
+
+	@ApiOperation(value = "密码重置")
     @IgnoreAuth
 	@RequestMapping(value = "/resetPass")
     public R resetPass(String username, HttpServletRequest request){
@@ -113,10 +110,8 @@ public class UsersController {
         usersService.update(user,null);
         return R.ok("密码已重置为：123456");
     }
-	
-	/**
-     * 列表
-     */
+
+	@ApiOperation(value = "分页查询")
     @RequestMapping("/page")
     public R page(@RequestParam Map<String, Object> params,UsersEntity user){
         EntityWrapper<UsersEntity> ew = new EntityWrapper<UsersEntity>();
@@ -124,9 +119,7 @@ public class UsersController {
         return R.ok().put("data", page);
     }
 
-	/**
-     * 列表
-     */
+	@ApiOperation(value = "全量查询")
     @RequestMapping("/list")
     public R list( UsersEntity user){
        	EntityWrapper<UsersEntity> ew = new EntityWrapper<UsersEntity>();
@@ -134,18 +127,14 @@ public class UsersController {
         return R.ok().put("data", usersService.selectListView(ew));
     }
 
-    /**
-     * 信息
-     */
+	@ApiOperation(value = "信息")
     @RequestMapping("/info/{id}")
     public R info(@PathVariable("id") String id){
         UsersEntity user = usersService.selectById(id);
         return R.ok().put("data", user);
     }
-    
-    /**
-     * 获取用户的session用户信息
-     */
+
+	@ApiOperation(value = "获取用户的session用户信息")
     @RequestMapping("/session")
     public R getCurrUser(HttpServletRequest request){
     	Integer id = (Integer)request.getSession().getAttribute("userId");
@@ -153,9 +142,7 @@ public class UsersController {
         return R.ok().put("data", user);
     }
 
-    /**
-     * 保存
-     */
+	@ApiOperation(value = "保存")
     @PostMapping("/save")
     public R save(@RequestBody UsersEntity user){
 //    	ValidatorUtils.validateEntity(user);
@@ -166,9 +153,7 @@ public class UsersController {
         return R.ok();
     }
 
-    /**
-     * 修改
-     */
+	@ApiOperation(value = "修改")
     @RequestMapping("/update")
     public R update(@RequestBody UsersEntity user){
 //        ValidatorUtils.validateEntity(user);
@@ -176,9 +161,7 @@ public class UsersController {
         return R.ok();
     }
 
-    /**
-     * 删除
-     */
+	@ApiOperation(value = "删除")
     @RequestMapping("/delete")
     public R delete(@RequestBody Long[] ids){
 		List<UsersEntity> user = usersService.selectList(null);

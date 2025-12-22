@@ -37,6 +37,8 @@ public class AuthorizationInterceptor implements HandlerInterceptor {
 
 
         String servletPath = request.getServletPath();
+//        String requestUrl = request.getRequestURI();
+//        System.out.println("当前请求URL：" + requestUrl);
         //"/dictionary/page".equals(request.getServletPath())  ||
         if("/file/upload".equals(request.getServletPath()) || "/yonghu/register".equals(request.getServletPath()) ){//请求路径是字典表或者文件上传 直接放行
             return true;

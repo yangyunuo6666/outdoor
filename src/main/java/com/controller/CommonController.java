@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 
 import com.alibaba.fastjson.JSON;
 import com.utils.StringUtil;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.apache.commons.lang3.StringUtils;
 import org.json.JSONObject;
 import org.slf4j.Logger;
@@ -37,9 +39,8 @@ import com.utils.BaiduUtil;
 import com.utils.FileUtil;
 import com.utils.R;
 
-/**
- * 通用接口
- */
+
+@Api(tags = "通用接口")
 @RestController
 public class CommonController {
     private static final Logger logger = LoggerFactory.getLogger(CommonController.class);
@@ -48,8 +49,6 @@ public class CommonController {
 
 
     /**
-     * Java代码实现MySQL数据库导出
-     *
      * @param mysqlUrl     MySQL安装路径
      * @param hostIP       MySQL数据库所在服务器地址IP
      * @param userName     进入数据库所需要的用户名
@@ -60,6 +59,7 @@ public class CommonController {
      * @param databaseName 要导出的数据库名
      * @return 返回true表示导出成功，否则返回false。
      */
+    @ApiOperation(value = "Java代码实现MySQL数据库导出")
     @IgnoreAuth
     @RequestMapping("/beifen")
     public R beifen(String mysqlUrl, String hostIP, String userName, String hostPort, String password, String savePath, String fileName, String databaseName) {
@@ -104,8 +104,6 @@ public class CommonController {
     }
 
     /**
-     * Java实现MySQL数据库导入
-     *
      * @param mysqlUrl     MySQL安装路径
      * @param hostIP       MySQL数据库所在服务器地址IP
      * @param userName     进入数据库所需要的用户名
@@ -115,6 +113,7 @@ public class CommonController {
      * @param fileName     数据库导出文件文件名
      * @param databaseName 要导出的数据库名
      */
+    @ApiOperation(value = "Java实现MySQL数据库导入")
     @IgnoreAuth
     @RequestMapping("/huanyuan")
     public R huanyuan(String mysqlUrl, String hostIP, String userName, String hostPort, String password, String savePath, String fileName, String databaseName) {
@@ -145,10 +144,8 @@ public class CommonController {
     }
 
 
-    /**
-     * 饼状图求和
-     * @return
-     */
+
+    @ApiOperation(value = "饼状图求和")
     @RequestMapping("/pieSum")
     public R pieSum(@RequestParam Map<String,Object> params) {
         logger.debug("饼状图求和:,,Controller:{},,params:{}",this.getClass().getName(),params);
@@ -156,10 +153,8 @@ public class CommonController {
         return R.ok().put("data", result);
     }
 
-    /**
-     * 饼状图统计
-     * @return
-     */
+
+    @ApiOperation(value = "饼状图统计")
     @RequestMapping("/pieCount")
     public R pieCount(@RequestParam Map<String,Object> params) {
         logger.debug("饼状图统计:,,Controller:{},,params:{}",this.getClass().getName(),params);
@@ -167,10 +162,8 @@ public class CommonController {
         return R.ok().put("data", result);
     }
 
-    /**
-     * 柱状图求和单列
-     * @return
-     */
+
+    @ApiOperation(value = "柱状图求和单列")
     @RequestMapping("/barSumOne")
     public R barSumOne(@RequestParam Map<String,Object> params) {
         logger.debug("柱状图求和单列:,,Controller:{},,params:{}",this.getClass().getName(),params);
@@ -194,10 +187,9 @@ public class CommonController {
         resultMap.put("legend",legend);
         return R.ok().put("data", resultMap);
     }
-    /**
-     * 柱状图统计单列
-     * @return
-     */
+
+
+    @ApiOperation(value = "柱状图统计单列")
     @RequestMapping("/barCountOne")
     public R barCountOne(@RequestParam Map<String,Object> params) {
         logger.debug("柱状图统计单列:,,Controller:{},,params:{}",this.getClass().getName(),params);
@@ -223,10 +215,8 @@ public class CommonController {
         return R.ok().put("data", resultMap);
     }
 
-    /**
-     * 柱状图统计双列
-     * @return
-     */
+
+    @ApiOperation(value = "柱状图统计双列")
     @RequestMapping("/barSumTwo")
     public R barSumTwo(@RequestParam Map<String,Object> params) {
         logger.debug("柱状图统计双列:,,Controller:{},,params:{}",this.getClass().getName(),params);
@@ -278,10 +268,9 @@ public class CommonController {
         resultMap.put("legend",legend);
         return R.ok().put("data", resultMap);
     }
-    /**
-     * 柱状图统计双列
-     * @return
-     */
+
+
+    @ApiOperation(value = "柱状图统计双列")
     @RequestMapping("/barCountTwo")
     public R barCountTwo(@RequestParam Map<String,Object> params) {
         logger.debug("柱状图统计双列:,,Controller:{},,params:{}",this.getClass().getName(),params);
@@ -334,6 +323,7 @@ public class CommonController {
         return R.ok().put("data", resultMap);
     }
 
+
     /**
      tableName 查询表
      condition1 条件1
@@ -344,6 +334,7 @@ public class CommonController {
      有值 Number(res.data.value.toFixed(1))
      无值 if(res.data){}
      * */
+    @ApiOperation(value = "查询表")
     @IgnoreAuth
     @RequestMapping("/queryScore")
     public R queryScore(@RequestParam Map<String, Object> params) {
@@ -352,12 +343,13 @@ public class CommonController {
         return R.ok().put("data", queryScore);
     }
 
+
     /**
-     * 查询字典表的分组统计总条数
      *  tableName  		表名
      *	groupColumn  	分组字段
      * @return
      */
+    @ApiOperation(value = "查询字典表的分组统计总条数")
     @RequestMapping("/newSelectGroupCount")
     public R newSelectGroupCount(@RequestParam Map<String,Object> params) {
         logger.debug("newSelectGroupCount:,,Controller:{},,params:{}",this.getClass().getName(),params);
@@ -366,12 +358,12 @@ public class CommonController {
     }
 
     /**
-     * 查询字典表的分组求和
      * tableName  		表名
      * groupColumn  		分组字段
      * sumCloum			统计字段
      * @return
      */
+    @ApiOperation(value = "查询字典表的分组求和")
     @RequestMapping("/newSelectGroupSum")
     public R newSelectGroupSum(@RequestParam Map<String,Object> params) {
         logger.debug("newSelectGroupSum:,,Controller:{},,params:{}",this.getClass().getName(),params);
@@ -379,9 +371,8 @@ public class CommonController {
         return R.ok().put("data", result);
     }
 
-    /**
-     * 柱状图求和 老的
-     */
+
+    @ApiOperation(value = "柱状图求和 老的")
     @RequestMapping("/barSum")
     public R barSum(@RequestParam Map<String,Object> params) {
         logger.debug("barSum方法:,,Controller:{},,params:{}",this.getClass().getName(), com.alibaba.fastjson.JSONObject.toJSONString(params));
@@ -531,9 +522,8 @@ public class CommonController {
         return R.ok().put("data", resultMap);
     }
 
-    /**
-     * 柱状图统计 老的
-     */
+
+    @ApiOperation(value = "柱状图统计 老的")
     @RequestMapping("/barCount")
     public R barCount(@RequestParam Map<String,Object> params) {
         logger.debug("barCount方法:,,Controller:{},,params:{}",this.getClass().getName(), com.alibaba.fastjson.JSONObject.toJSONString(params));

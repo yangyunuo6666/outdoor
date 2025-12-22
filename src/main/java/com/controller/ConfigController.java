@@ -5,6 +5,8 @@ package com.controller;
 import java.util.Arrays;
 import java.util.Map;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,9 +23,8 @@ import com.utils.PageUtils;
 import com.utils.R;
 import com.utils.ValidatorUtils;
 
-/**
- * 登录相关
- */
+
+@Api(tags = "登录相关接口")
 @RequestMapping("config")
 @RestController
 public class ConfigController{
@@ -31,9 +32,8 @@ public class ConfigController{
 	@Autowired
 	private ConfigService configService;
 
-	/**
-     * 列表
-     */
+
+    @ApiOperation(value = "列表")
     @RequestMapping("/page")
     public R page(@RequestParam Map<String, Object> params,ConfigEntity config){
         EntityWrapper<ConfigEntity> ew = new EntityWrapper<ConfigEntity>();
@@ -41,9 +41,7 @@ public class ConfigController{
         return R.ok().put("data", page);
     }
     
-	/**
-     * 列表
-     */
+	@ApiOperation(value = "列表")
     @IgnoreAuth
     @RequestMapping("/list")
     public R list(@RequestParam Map<String, Object> params,ConfigEntity config){
@@ -52,18 +50,14 @@ public class ConfigController{
         return R.ok().put("data", page);
     }
 
-    /**
-     * 信息
-     */
+    @ApiOperation(value = "信息")
     @RequestMapping("/info/{id}")
     public R info(@PathVariable("id") String id){
         ConfigEntity config = configService.selectById(id);
         return R.ok().put("data", config);
     }
     
-    /**
-     * 详情
-     */
+    @ApiOperation(value = "详情")
     @IgnoreAuth
     @RequestMapping("/detail/{id}")
     public R detail(@PathVariable("id") String id){
@@ -71,18 +65,16 @@ public class ConfigController{
         return R.ok().put("data", config);
     }
     
-    /**
-     * 根据name获取信息
-     */
+
+    @ApiOperation(value = "根据name获取信息")
     @RequestMapping("/info")
     public R infoByName(@RequestParam String name){
         ConfigEntity config = configService.selectOne(new EntityWrapper<ConfigEntity>().eq("name", "faceFile"));
         return R.ok().put("data", config);
     }
     
-    /**
-     * 保存
-     */
+
+    @ApiOperation(value = "保存")
     @PostMapping("/save")
     public R save(@RequestBody ConfigEntity config){
 //    	ValidatorUtils.validateEntity(config);
@@ -90,9 +82,8 @@ public class ConfigController{
         return R.ok();
     }
 
-    /**
-     * 修改
-     */
+
+    @ApiOperation(value = "修改")
     @RequestMapping("/update")
     public R update(@RequestBody ConfigEntity config){
 //        ValidatorUtils.validateEntity(config);
@@ -100,9 +91,8 @@ public class ConfigController{
         return R.ok();
     }
 
-    /**
-     * 删除
-     */
+
+    @ApiOperation(value = "删除")
     @RequestMapping("/delete")
     public R delete(@RequestBody Long[] ids){
     	configService.deleteBatchIds(Arrays.asList(ids));
