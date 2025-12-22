@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.EquipmentOrderDao">
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        a.id as id
+        ,a.equipment_order_uuid_number as equipmentOrderUuidNumber
+        ,a.equipment_id as equipmentId
+        ,a.yonghu_id as yonghuId
+        ,a.buy_number as buyNumber
+        ,a.equipment_order_number as equipmentOrderNumber
+        ,a.equipment_order_time as equipmentOrderTime
+        ,a.equipment_order_true_price as equipmentOrderTruePrice
+        ,a.equipment_order_types as equipmentOrderTypes
+        ,a.equipment_order_payment_types as equipmentOrderPaymentTypes
+        ,a.insert_time as insertTime
+        ,a.create_time as createTime
+    </sql>
+    <select id="selectListView" parameterType="map" resultType="com.entity.view.EquipmentOrderView" >
+        SELECT
+        <include refid="Base_Column_List" />
+        <!-- 级联表的字段 -->
+        ,equipment.equipment_uuid_number as equipmentUuidNumber
+        ,equipment.equipment_name as equipmentName
+        ,equipment.equipment_photo as equipmentPhoto
+        ,equipment.equipment_types as equipmentTypes
+        ,equipment.equipment_kucun_number as equipmentKucunNumber
+        ,equipment.equipment_new_money as equipmentNewMoney
+        ,equipment.equipment_clicknum as equipmentClicknum
+        ,equipment.equipment_content as equipmentContent
+        ,equipment.shangxia_types as shangxiaTypes
+        ,equipment.equipment_delete as equipmentDelete
+        ,yonghu.yonghu_name as yonghuName
+        ,yonghu.yonghu_phone as yonghuPhone
+        ,yonghu.yonghu_id_number as yonghuIdNumber
+        ,yonghu.yonghu_photo as yonghuPhoto
+        ,yonghu.yonghu_email as yonghuEmail
+        ,yonghu.new_money as newMoney
+
+        FROM equipment_order  a
+        left JOIN equipment equipment ON a.equipment_id = equipment.id
+        left JOIN yonghu yonghu ON a.yonghu_id = yonghu.id
+
+        <where>
+            <if test="params.ids != null">
+                and a.id in
+                <foreach item="item" index="index" collection="params.ids" open="(" separator="," close=")">
+                #{item}
+                </foreach>
+            </if>
+            <if test=" params.equipmentOrderUuidNumber != '' and params.equipmentOrderUuidNumber != null and params.equipmentOrderUuidNumber != 'null' ">
+                and a.equipment_order_uuid_number like CONCAT('%',#{params.equipmentOrderUuidNumber},'%')
+            </if>
+            <if test="params.equipmentId != null and params.equipmentId != ''">
+                and (
+                    a.equipment_id = #{params.equipmentId}
+                )
+            </if>
+            <if test="params.yonghuId != null and params.yonghuId != ''">
+                and (
+                    a.yonghu_id = #{params.yonghuId}
+                )
+            </if>
+            <if test="params.buyNumberStart != null and params.buyNumberStart != ''">
+                <![CDATA[  and a.buy_number >= #{params.buyNumberStart}   ]]>
+            </if>
+            <if test="params.buyNumberEnd != null and params.buyNumberEnd != ''">
+                <![CDATA[  and a.buy_number <= #{params.buyNumberEnd}   ]]>
+            </if>
+             <if test="params.buyNumber != null and params.buyNumber != ''">
+                and a.buy_number = #{params.buyNumber}
+             </if>
+            <if test="params.equipmentOrderNumberStart != null and params.equipmentOrderNumberStart != ''">
+                <![CDATA[  and a.equipment_order_number >= #{params.equipmentOrderNumberStart}   ]]>
+            </if>
+            <if test="params.equipmentOrderNumberEnd != null and params.equipmentOrderNumberEnd != ''">
+                <![CDATA[  and a.equipment_order_number <= #{params.equipmentOrderNumberEnd}   ]]>
+            </if>
+             <if test="params.equipmentOrderNumber != null and params.equipmentOrderNumber != ''">
+                and a.equipment_order_number = #{params.equipmentOrderNumber}
+             </if>
+            <if test="params.equipmentOrderTruePriceStart != null ">
+                <![CDATA[  and a.equipment_order_true_price >= #{params.equipmentOrderTruePriceStart}   ]]>
+            </if>
+            <if test="params.equipmentOrderTruePriceEnd != null ">
+                <![CDATA[  and a.equipment_order_true_price <= #{params.equipmentOrderTruePriceEnd}   ]]>
+            </if>
+            <if test="params.equipmentOrderTypes != null and params.equipmentOrderTypes != ''">
+                and a.equipment_order_types = #{params.equipmentOrderTypes}
+            </if>
+            <if test="params.equipmentOrderPaymentTypes != null and params.equipmentOrderPaymentTypes != ''">
+                and a.equipment_order_payment_types = #{params.equipmentOrderPaymentTypes}
+            </if>
+            <if test=" params.insertTimeStart != '' and params.insertTimeStart != null ">
+                <![CDATA[  and UNIX_TIMESTAMP(a.insert_time) >= UNIX_TIMESTAMP(#{params.insertTimeStart}) ]]>
+            </if>
+            <if test=" params.insertTimeEnd != '' and params.insertTimeEnd != null ">
+                <![CDATA[  and UNIX_TIMESTAMP(a.insert_time) <= UNIX_TIMESTAMP(#{params.insertTimeEnd}) ]]>
+            </if>
+
+                <!-- 判断玩具的id不为空 -->
+            <if test=" params.equipmentIdNotNull != '' and params.equipmentIdNotNull != null and params.equipmentIdNotNull != 'null' ">
+                and a.equipment_id IS NOT NULL
+            </if>
+            <if test=" params.equipmentUuidNumber != '' and params.equipmentUuidNumber != null and params.equipmentUuidNumber != 'null' ">
+                and equipment.equipment_uuid_number like CONCAT('%',#{params.equipmentUuidNumber},'%')
+            </if>
+            <if test=" params.equipmentName != '' and params.equipmentName != null and params.equipmentName != 'null' ">
+                and equipment.equipment_name like CONCAT('%',#{params.equipmentName},'%')
+            </if>
+            <if test="params.equipmentTypes != null  and params.equipmentTypes != ''">
+                and equipment.equipment_types = #{params.equipmentTypes}
+            </if>
+
+            <if test="params.equipmentKucunNumberStart != null  and params.equipmentKucunNumberStart != '' ">
+                <![CDATA[  and equipment.equipment_kucun_number >= #{params.equipmentKucunNumberStart}   ]]>
+            </if>
+            <if test="params.equipmentKucunNumberEnd != null  and params.equipmentKucunNumberEnd != '' ">
+                <![CDATA[  and equipment.equipment_kucun_number <= #{params.equipmentKucunNumberEnd}   ]]>
+            </if>
+            <if test="params.equipmentKucunNumber != null  and params.equipmentKucunNumber != '' ">
+                and equipment.equipment_kucun_number = #{params.equipmentKucunNumber}
+            </if>
+            <if test="params.equipmentNewMoneyStart != null ">
+                <![CDATA[  and equipment.equipment_new_money >= #{params.equipmentNewMoneyStart}   ]]>
+            </if>
+            <if test="params.equipmentNewMoneyEnd != null ">
+                <![CDATA[  and equipment.equipment_new_money <= #{params.equipmentNewMoneyEnd}   ]]>
+            </if>
+            <if test="params.equipmentClicknumStart != null  and params.equipmentClicknumStart != '' ">
+                <![CDATA[  and equipment.equipment_clicknum >= #{params.equipmentClicknumStart}   ]]>
+            </if>
+            <if test="params.equipmentClicknumEnd != null  and params.equipmentClicknumEnd != '' ">
+                <![CDATA[  and equipment.equipment_clicknum <= #{params.equipmentClicknumEnd}   ]]>
+            </if>
+            <if test="params.equipmentClicknum != null  and params.equipmentClicknum != '' ">
+                and equipment.equipment_clicknum = #{params.equipmentClicknum}
+            </if>
+            <if test=" params.equipmentContent != '' and params.equipmentContent != null and params.equipmentContent != 'null' ">
+                and equipment.equipment_content like CONCAT('%',#{params.equipmentContent},'%')
+            </if>
+            <if test="params.shangxiaTypes != null  and params.shangxiaTypes != ''">
+                and equipment.shangxia_types = #{params.shangxiaTypes}
+            </if>
+
+            <if test="params.equipmentDeleteStart != null  and params.equipmentDeleteStart != '' ">
+                <![CDATA[  and equipment.equipment_delete >= #{params.equipmentDeleteStart}   ]]>
+            </if>
+            <if test="params.equipmentDeleteEnd != null  and params.equipmentDeleteEnd != '' ">
+                <![CDATA[  and equipment.equipment_delete <= #{params.equipmentDeleteEnd}   ]]>
+            </if>
+            <if test="params.equipmentDelete != null  and params.equipmentDelete != '' ">
+                and equipment.equipment_delete = #{params.equipmentDelete}
+            </if>
+            <if test=" params.insertTimeStart != '' and params.insertTimeStart != null ">
+                <![CDATA[  and UNIX_TIMESTAMP(equipment.insert_time) >= UNIX_TIMESTAMP(#{params.insertTimeStart}) ]]>
+            </if>
+            <if test=" params.insertTimeEnd != '' and params.insertTimeEnd != null ">
+                <![CDATA[  and UNIX_TIMESTAMP(equipment.insert_time) <= UNIX_TIMESTAMP(#{params.insertTimeEnd}) ]]>
+            </if>
+                <!-- 判断用户的id不为空 -->
+            <if test=" params.yonghuIdNotNull != '' and params.yonghuIdNotNull != null and params.yonghuIdNotNull != 'null' ">
+                and a.yonghu_id IS NOT NULL
+            </if>
+            <if test=" params.yonghuName != '' and params.yonghuName != null and params.yonghuName != 'null' ">
+                and yonghu.yonghu_name like CONCAT('%',#{params.yonghuName},'%')
+            </if>
+            <if test=" params.yonghuPhone != '' and params.yonghuPhone != null and params.yonghuPhone != 'null' ">
+                and yonghu.yonghu_phone like CONCAT('%',#{params.yonghuPhone},'%')
+            </if>
+            <if test=" params.yonghuIdNumber != '' and params.yonghuIdNumber != null and params.yonghuIdNumber != 'null' ">
+                and yonghu.yonghu_id_number like CONCAT('%',#{params.yonghuIdNumber},'%')
+            </if>
+            <if test=" params.yonghuEmail != '' and params.yonghuEmail != null and params.yonghuEmail != 'null' ">
+                and yonghu.yonghu_email like CONCAT('%',#{params.yonghuEmail},'%')
+            </if>
+            <if test="params.newMoneyStart != null ">
+                <![CDATA[  and yonghu.new_money >= #{params.newMoneyStart}   ]]>
+            </if>
+            <if test="params.newMoneyEnd != null ">
+                <![CDATA[  and yonghu.new_money <= #{params.newMoneyEnd}   ]]>
+            </if>
+        </where>
+        order by a.${params.sort} ${params.order}
+    </select>
+
+</mapper>

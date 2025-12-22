@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.EquipmentDao">
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        a.id as id
+        ,a.equipment_uuid_number as equipmentUuidNumber
+        ,a.equipment_name as equipmentName
+        ,a.equipment_photo as equipmentPhoto
+        ,a.equipment_types as equipmentTypes
+        ,a.equipment_kucun_number as equipmentKucunNumber
+        ,a.equipment_new_money as equipmentNewMoney
+        ,a.equipment_clicknum as equipmentClicknum
+        ,a.equipment_content as equipmentContent
+        ,a.shangxia_types as shangxiaTypes
+        ,a.equipment_delete as equipmentDelete
+        ,a.insert_time as insertTime
+        ,a.create_time as createTime
+    </sql>
+    <select id="selectListView" parameterType="map" resultType="com.entity.view.EquipmentView" >
+        SELECT
+        <include refid="Base_Column_List" />
+        <!-- 级联表的字段 -->
+
+        FROM equipment  a
+
+        <where>
+            <if test="params.ids != null">
+                and a.id in
+                <foreach item="item" index="index" collection="params.ids" open="(" separator="," close=")">
+                #{item}
+                </foreach>
+            </if>
+            <if test=" params.equipmentUuidNumber != '' and params.equipmentUuidNumber != null and params.equipmentUuidNumber != 'null' ">
+                and a.equipment_uuid_number like CONCAT('%',#{params.equipmentUuidNumber},'%')
+            </if>
+            <if test=" params.equipmentName != '' and params.equipmentName != null and params.equipmentName != 'null' ">
+                and a.equipment_name like CONCAT('%',#{params.equipmentName},'%')
+            </if>
+            <if test="params.equipmentTypes != null and params.equipmentTypes != ''">
+                and a.equipment_types = #{params.equipmentTypes}
+            </if>
+            <if test="params.equipmentKucunNumberStart != null and params.equipmentKucunNumberStart != ''">
+                <![CDATA[  and a.equipment_kucun_number >= #{params.equipmentKucunNumberStart}   ]]>
+            </if>
+            <if test="params.equipmentKucunNumberEnd != null and params.equipmentKucunNumberEnd != ''">
+                <![CDATA[  and a.equipment_kucun_number <= #{params.equipmentKucunNumberEnd}   ]]>
+            </if>
+             <if test="params.equipmentKucunNumber != null and params.equipmentKucunNumber != ''">
+                and a.equipment_kucun_number = #{params.equipmentKucunNumber}
+             </if>
+            <if test="params.equipmentNewMoneyStart != null ">
+                <![CDATA[  and a.equipment_new_money >= #{params.equipmentNewMoneyStart}   ]]>
+            </if>
+            <if test="params.equipmentNewMoneyEnd != null ">
+                <![CDATA[  and a.equipment_new_money <= #{params.equipmentNewMoneyEnd}   ]]>
+            </if>
+            <if test="params.equipmentClicknumStart != null and params.equipmentClicknumStart != ''">
+                <![CDATA[  and a.equipment_clicknum >= #{params.equipmentClicknumStart}   ]]>
+            </if>
+            <if test="params.equipmentClicknumEnd != null and params.equipmentClicknumEnd != ''">
+                <![CDATA[  and a.equipment_clicknum <= #{params.equipmentClicknumEnd}   ]]>
+            </if>
+             <if test="params.equipmentClicknum != null and params.equipmentClicknum != ''">
+                and a.equipment_clicknum = #{params.equipmentClicknum}
+             </if>
+            <if test=" params.equipmentContent != '' and params.equipmentContent != null and params.equipmentContent != 'null' ">
+                and a.equipment_content like CONCAT('%',#{params.equipmentContent},'%')
+            </if>
+            <if test="params.shangxiaTypes != null and params.shangxiaTypes != ''">
+                and a.shangxia_types = #{params.shangxiaTypes}
+            </if>
+            <if test="params.equipmentDeleteStart != null and params.equipmentDeleteStart != ''">
+                <![CDATA[  and a.equipment_delete >= #{params.equipmentDeleteStart}   ]]>
+            </if>
+            <if test="params.equipmentDeleteEnd != null and params.equipmentDeleteEnd != ''">
+                <![CDATA[  and a.equipment_delete <= #{params.equipmentDeleteEnd}   ]]>
+            </if>
+             <if test="params.equipmentDelete != null and params.equipmentDelete != ''">
+                and a.equipment_delete = #{params.equipmentDelete}
+             </if>
+            <if test=" params.insertTimeStart != '' and params.insertTimeStart != null ">
+                <![CDATA[  and UNIX_TIMESTAMP(a.insert_time) >= UNIX_TIMESTAMP(#{params.insertTimeStart}) ]]>
+            </if>
+            <if test=" params.insertTimeEnd != '' and params.insertTimeEnd != null ">
+                <![CDATA[  and UNIX_TIMESTAMP(a.insert_time) <= UNIX_TIMESTAMP(#{params.insertTimeEnd}) ]]>
+            </if>
+
+        </where>
+        order by a.${params.sort} ${params.order}
+    </select>
+
+</mapper>
