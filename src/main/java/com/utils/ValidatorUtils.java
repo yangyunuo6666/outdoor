@@ -10,9 +10,7 @@ import javax.validation.Validator;
 
 import com.entity.EIException;
 
-/**
- * hibernate-validator校验工具类
- */
+//hibernate-validator校验工具类
 public class ValidatorUtils {
     private static Validator validator;
 

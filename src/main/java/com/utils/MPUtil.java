@@ -136,7 +136,6 @@ public class MPUtil {
 	
 	/**
 	 * 驼峰格式字符串转换为下划线格式字符串
-	 * 
 	 * @param param
 	 * @return
 	 */

@@ -16,11 +16,7 @@ import com.utils.PageUtils;
 import com.utils.Query;
 
 
-/**
- * 系统用户
- * @author yangliyuan
- * @date 2019年10月10日 上午9:17:59
- */
+//系统用户
 @Service("configService")
 public class ConfigServiceImpl extends ServiceImpl<ConfigDao, ConfigEntity> implements ConfigService {
 	@Override

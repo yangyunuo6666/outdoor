@@ -10,11 +10,7 @@ import com.entity.UsersEntity;
 import com.utils.PageUtils;
 
 
-/**
- * 系统用户
- * @author yangliyuan
- * @date 2019年10月10日 上午9:18:20
- */
+//Root用户
 public interface UsersService extends IService<UsersEntity> {
  	PageUtils queryPage(Map<String, Object> params);
     

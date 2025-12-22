@@ -37,7 +37,8 @@ public class AuthorizationInterceptor implements HandlerInterceptor {
 
 
         String servletPath = request.getServletPath();
-        if("/dictionary/page".equals(request.getServletPath())  || "/file/upload".equals(request.getServletPath()) || "/yonghu/register".equals(request.getServletPath()) ){//请求路径是字典表或者文件上传 直接放行
+        //"/dictionary/page".equals(request.getServletPath())  ||
+        if("/file/upload".equals(request.getServletPath()) || "/yonghu/register".equals(request.getServletPath()) ){//请求路径是字典表或者文件上传 直接放行
             return true;
         }
         //支持跨域请求
@@ -46,6 +47,7 @@ public class AuthorizationInterceptor implements HandlerInterceptor {
         response.setHeader("Access-Control-Allow-Credentials", "true");
         response.setHeader("Access-Control-Allow-Headers", "x-requested-with,request-source,Token, Origin,imgType, Content-Type, cache-control,postman-token,Cookie, Accept,authorization");
         response.setHeader("Access-Control-Allow-Origin", request.getHeader("Origin"));
+//        response.setHeader("Access-Control-Allow-Origin", "http://localhost:8081");
 
         IgnoreAuth annotation;
         if (handler instanceof HandlerMethod) {

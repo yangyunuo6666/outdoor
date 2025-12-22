@@ -18,12 +18,7 @@ import com.baomidou.mybatisplus.enums.FieldFill;
 import com.utils.DateUtil;
 
 
-/**
- * 留言板
- *
- * @author 
- * @email
- */
+//留言板
 @TableName("liuyan")
 public class LiuyanEntity<T> implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -43,9 +38,7 @@ public class LiuyanEntity<T> implements Serializable {
 	}
 
 
-    /**
-     * 主键
-     */
+    //主键
     @TableId(type = IdType.AUTO)
     @ColumnInfo(comment="主键",type="int(11)")
     @TableField(value = "id")
@@ -53,36 +46,28 @@ public class LiuyanEntity<T> implements Serializable {
     private Integer id;
 
 
-    /**
-     * 用户
-     */
+    //用户
     @ColumnInfo(comment="用户",type="int(11)")
     @TableField(value = "yonghu_id")
 
     private Integer yonghuId;
 
 
-    /**
-     * 留言标题
-     */
+    //留言标题
     @ColumnInfo(comment="留言标题",type="varchar(200)")
     @TableField(value = "liuyan_name")
 
     private String liuyanName;
 
 
-    /**
-     * 留言内容
-     */
+    //留言内容
     @ColumnInfo(comment="留言内容",type="longtext")
     @TableField(value = "liuyan_text")
 
     private String liuyanText;
 
 
-    /**
-     * 留言时间
-     */
+    //留言时间
     @JsonFormat(locale="zh", timezone="GMT+8", pattern="yyyy-MM-dd HH:mm:ss")
 	@DateTimeFormat
     @ColumnInfo(comment="留言时间",type="timestamp")
@@ -91,18 +76,14 @@ public class LiuyanEntity<T> implements Serializable {
     private Date insertTime;
 
 
-    /**
-     * 回复内容
-     */
+    //回复内容
     @ColumnInfo(comment="回复内容",type="longtext")
     @TableField(value = "reply_text")
 
     private String replyText;
 
 
-    /**
-     * 回复时间
-     */
+    //回复时间
     @JsonFormat(locale="zh", timezone="GMT+8", pattern="yyyy-MM-dd HH:mm:ss")
 	@DateTimeFormat
     @ColumnInfo(comment="回复时间",type="timestamp")
@@ -111,9 +92,7 @@ public class LiuyanEntity<T> implements Serializable {
     private Date updateTime;
 
 
-    /**
-     * 创建时间
-     */
+    //创建时间
     @JsonFormat(locale="zh", timezone="GMT+8", pattern="yyyy-MM-dd HH:mm:ss")
 	@DateTimeFormat
     @ColumnInfo(comment="创建时间",type="timestamp")
@@ -122,107 +101,82 @@ public class LiuyanEntity<T> implements Serializable {
     private Date createTime;
 
 
-    /**
-	 * 获取：主键
-	 */
+    //获取：主键
     public Integer getId() {
         return id;
     }
-    /**
-	 * 设置：主键
-	 */
 
+    //设置：主键
     public void setId(Integer id) {
         this.id = id;
     }
-    /**
-	 * 获取：用户
-	 */
+
+    //获取：用户
     public Integer getYonghuId() {
         return yonghuId;
     }
-    /**
-	 * 设置：用户
-	 */
 
+    //设置：用户
     public void setYonghuId(Integer yonghuId) {
         this.yonghuId = yonghuId;
     }
-    /**
-	 * 获取：留言标题
-	 */
+
+    //获取：留言标题
     public String getLiuyanName() {
         return liuyanName;
     }
-    /**
-	 * 设置：留言标题
-	 */
 
+    //设置：留言标题
     public void setLiuyanName(String liuyanName) {
         this.liuyanName = liuyanName;
     }
-    /**
-	 * 获取：留言内容
-	 */
+
+    //获取：留言内容
     public String getLiuyanText() {
         return liuyanText;
     }
-    /**
-	 * 设置：留言内容
-	 */
 
+    //设置：留言内容
     public void setLiuyanText(String liuyanText) {
         this.liuyanText = liuyanText;
     }
-    /**
-	 * 获取：留言时间
-	 */
+
+    //获取：留言时间
     public Date getInsertTime() {
         return insertTime;
     }
-    /**
-	 * 设置：留言时间
-	 */
 
+    //设置：留言时间
     public void setInsertTime(Date insertTime) {
         this.insertTime = insertTime;
     }
-    /**
-	 * 获取：回复内容
-	 */
+
+    //获取：回复内容
     public String getReplyText() {
         return replyText;
     }
-    /**
-	 * 设置：回复内容
-	 */
 
+    //设置：回复内容
     public void setReplyText(String replyText) {
         this.replyText = replyText;
     }
-    /**
-	 * 获取：回复时间
-	 */
+
+    //获取：回复时间
     public Date getUpdateTime() {
         return updateTime;
     }
-    /**
-	 * 设置：回复时间
-	 */
 
+    //设置：回复时间
     public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
     }
-    /**
-	 * 获取：创建时间
-	 */
+
+    //获取：创建时间
     public Date getCreateTime() {
         return createTime;
     }
-    /**
-	 * 设置：创建时间
-	 */
 
+    //设置：创建时间
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
     }

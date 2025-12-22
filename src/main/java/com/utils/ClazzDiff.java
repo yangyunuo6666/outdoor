@@ -11,9 +11,7 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
-/**
- * 对象比较
- */
+//对象比较
 public class ClazzDiff {
 
 

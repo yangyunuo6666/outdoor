@@ -44,9 +44,9 @@ const menu = {
 			                "修改",
 			                "删除"
 			            ],
-			            "menu":"玩具管理",
+			            "menu":"设备管理",
 			            "menuJump":"列表",
-			            "tableName":"wanju"
+			            "tableName":"equipment"
 			        }
 			        ,
 			        {
@@ -55,9 +55,9 @@ const menu = {
 			                "修改",
 			                "删除"
 			            ],
-			            "menu":"玩具评价管理",
+			            "menu":"设备评价管理",
 			            "menuJump":"列表",
-			            "tableName":"wanjuCommentback"
+			            "tableName":"equipmentCommentback"
 			        }
 			        ,
 			        {
@@ -65,9 +65,9 @@ const menu = {
 			                "查看",
 			                "删除"
 			            ],
-			            "menu":"玩具收藏管理",
+			            "menu":"设备收藏管理",
 			            "menuJump":"列表",
-			            "tableName":"wanjuCollection"
+			            "tableName":"equipmentCollection"
 			        }
 			        ,
 			        {
@@ -76,12 +76,12 @@ const menu = {
 			                "查看",
 			                "删除"
 			            ],
-			            "menu":"玩具订单管理",
+			            "menu":"设备订单管理",
 			            "menuJump":"列表",
-			            "tableName":"wanjuOrder"
+			            "tableName":"equipmentOrder"
 			        }
 			    ],
-			    "menu":"玩具管理"
+			    "menu":"设备管理"
 			}
             ,{
                 "child":[
@@ -104,9 +104,9 @@ const menu = {
                             "删除",
                             "修改"
                         ],
-                        "menu":"玩具类型管理",
+                        "menu":"设备类型管理",
                         "menuJump":"列表",
-                        "tableName":"dictionaryWanju"
+                        "tableName":"dictionaryEquipment"
                     }
                 ],
                 "menu":"基础数据管理"

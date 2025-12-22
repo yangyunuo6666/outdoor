@@ -24,20 +24,20 @@ import huanyuan from '@/views/modules/databaseBackup/huanyuan'
     import forum from '@/views/modules/forum/list'
     import liuyan from '@/views/modules/liuyan/list'
     import news from '@/views/modules/news/list'
-    import wanju from '@/views/modules/wanju/list'
-    import wanjuCollection from '@/views/modules/wanjuCollection/list'
-    import wanjuCommentback from '@/views/modules/wanjuCommentback/list'
-    import wanjuOrder from '@/views/modules/wanjuOrder/list'
+    import equipment from '@/views/modules/equipment/list'
+    import equipmentCollection from '@/views/modules/equipmentCollection/list'
+    import equipmentCommentback from '@/views/modules/equipmentCommentback/list'
+    import equipmentOrder from '@/views/modules/equipmentOrder/list'
     import yonghu from '@/views/modules/yonghu/list'
     import config from '@/views/modules/config/list'
     import dictionaryForumState from '@/views/modules/dictionaryForumState/list'
     import dictionaryNews from '@/views/modules/dictionaryNews/list'
     import dictionarySex from '@/views/modules/dictionarySex/list'
     import dictionaryShangxia from '@/views/modules/dictionaryShangxia/list'
-    import dictionaryWanju from '@/views/modules/dictionaryWanju/list'
-    import dictionaryWanjuCollection from '@/views/modules/dictionaryWanjuCollection/list'
-    import dictionaryWanjuOrder from '@/views/modules/dictionaryWanjuOrder/list'
-    import dictionaryWanjuOrderPayment from '@/views/modules/dictionaryWanjuOrderPayment/list'
+    import dictionaryEquipment from '@/views/modules/dictionaryEquipment/list'
+    import dictionaryEquipmentCollection from '@/views/modules/dictionaryEquipmentCollection/list'
+    import dictionaryEquipmentOrder from '@/views/modules/dictionaryEquipmentOrder/list'
+    import dictionaryEquipmentOrderPayment from '@/views/modules/dictionaryEquipmentOrderPayment/list'
 
 
 
@@ -103,24 +103,24 @@ const routes = [{
         component: dictionaryShangxia
     }
     ,{
-        path: '/dictionaryWanju',
-        name: '玩具类型',
-        component: dictionaryWanju
+        path: '/dictionaryEquipment',
+        name: '设备类型',
+        component: dictionaryEquipment
     }
     ,{
-        path: '/dictionaryWanjuCollection',
+        path: '/dictionaryEquipmentCollection',
         name: '收藏表类型',
-        component: dictionaryWanjuCollection
+        component: dictionaryEquipmentCollection
     }
     ,{
-        path: '/dictionaryWanjuOrder',
+        path: '/dictionaryEquipmentOrder',
         name: '订单类型',
-        component: dictionaryWanjuOrder
+        component: dictionaryEquipmentOrder
     }
     ,{
-        path: '/dictionaryWanjuOrderPayment',
+        path: '/dictionaryEquipmentOrderPayment',
         name: '订单支付类型',
-        component: dictionaryWanjuOrderPayment
+        component: dictionaryEquipmentOrderPayment
     }
     ,{
         path: '/config',
@@ -150,24 +150,24 @@ const routes = [{
         component: news
       }
     ,{
-        path: '/wanju',
-        name: '玩具',
-        component: wanju
+        path: '/equipment',
+        name: '设备',
+        component: equipment
       }
     ,{
-        path: '/wanjuCollection',
-        name: '玩具收藏',
-        component: wanjuCollection
+        path: '/equipmentCollection',
+        name: '设备收藏',
+        component: equipmentCollection
       }
     ,{
-        path: '/wanjuCommentback',
-        name: '玩具评价',
-        component: wanjuCommentback
+        path: '/equipmentCommentback',
+        name: '设备评价',
+        component: equipmentCommentback
       }
     ,{
-        path: '/wanjuOrder',
-        name: '玩具订单',
-        component: wanjuOrder
+        path: '/equipmentOrder',
+        name: '设备订单',
+        component: equipmentOrder
       }
     ,{
         path: '/yonghu',

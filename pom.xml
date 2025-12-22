@@ -10,7 +10,7 @@
     </parent>
     <groupId>com.jlwl</groupId>
     <!-- 导入项目的名称 -->
-    <artifactId>wanjuzulinxitpng</artifactId>
+    <artifactId>equipmentzulinxitong</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>wanjuzulinxitpng</name>
     <description>玩具租赁系统</description>

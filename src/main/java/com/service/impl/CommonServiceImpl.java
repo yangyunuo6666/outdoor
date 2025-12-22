@@ -12,11 +12,7 @@ import com.dao.CommonDao;
 import com.service.CommonService;
 
 
-/**
- * 系统用户
- * @author
- * @date
- */
+//系统用户
 @Service("commonService")
 public class CommonServiceImpl implements CommonService {
 	

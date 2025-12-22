@@ -16,9 +16,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * 字典初始化监视器  用的是服务器监听,每次项目启动,都会调用这个类
- */
+//字典初始化监视器  用的是服务器监听,每次项目启动,都会调用这个类
 @WebListener
 public class DictionaryServletContextListener implements ServletContextListener {
 

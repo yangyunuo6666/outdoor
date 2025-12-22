@@ -8,9 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.lang.Nullable;
 import java.util.List;
 
-/**
- * 字典 服务类
- */
+//字典 服务类
 public interface DictionaryService extends IService<DictionaryEntity> {
 
     /**

@@ -8,9 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.lang.Nullable;
 import java.util.List;
 
-/**
- * 留言板 服务类
- */
+//留言板 服务类
 public interface LiuyanService extends IService<LiuyanEntity> {
 
     /**

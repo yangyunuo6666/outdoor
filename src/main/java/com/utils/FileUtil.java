@@ -6,11 +6,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
-/**
-* @author yangliyuan
-* @version 创建时间：2020年2月7日 下午8:01:14
-* 类说明 : 
-*/
+//类说明 :
 
 public class FileUtil {
 	public static byte[] FileToByte(File file) throws IOException {

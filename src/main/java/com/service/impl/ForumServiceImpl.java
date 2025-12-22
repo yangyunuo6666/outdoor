@@ -23,9 +23,7 @@ import com.entity.ForumEntity;
 import com.service.ForumService;
 import com.entity.view.ForumView;
 
-/**
- * 论坛 服务实现类
- */
+//论坛 服务实现类
 @Service("forumService")
 @Transactional
 public class ForumServiceImpl extends ServiceImpl<ForumDao, ForumEntity> implements ForumService {

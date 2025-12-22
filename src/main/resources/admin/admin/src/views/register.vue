@@ -2,7 +2,7 @@
     <div>
         <div class="container">
             <div class="login-form">
-                <h1 class="h1" style="color:#000;fontSize:28px;">玩具租赁系统注册</h1>
+                <h1 class="h1" style="color:#000;fontSize:28px;">设备租赁系统注册</h1>
                 <el-form class="rgs-form">
                     <el-form-item label="账号" class="input">
                         <el-input v-model="ruleForm.username" autocomplete="off" placeholder="账号"  />
@@ -254,7 +254,7 @@
 		background-position: center center;
 		background-size: cover;
 		background-repeat: no-repeat;
-		background-image: url(/wanjuzulinxitpng/img/back-img-bg.jpg);
+		background-image: url(/equipmentzulinxitong/img/back-img-bg.jpg);
 
 		.login-form {
 			right: 50%;

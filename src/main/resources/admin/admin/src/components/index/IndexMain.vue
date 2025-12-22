@@ -1,6 +1,6 @@
 <template>
 			<el-main style="padding: 10px 0px;
-						background-image: url(/wanjuzulinxitpng/img/back-list-img-bg.jpg);
+						background-image: url(/equipmentzulinxitong/img/back-list-img-bg.jpg);
 						background-size:100% 100%;
 						boxShadow: 0 0 6px rgba(0,0,0,0);
         		">

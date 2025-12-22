@@ -47,7 +47,7 @@
                         <a style="text-decoration:none" class="el-button el-button--success"
                            v-if="isAuth('liuyan','导入导出')"
                            icon="el-icon-download"
-                           href="http://localhost:8080/wanjuzulinxitpng/upload/liuyanMuBan.xls"
+                           href="http://localhost:8080/equipmentzulinxitong/upload/liuyanMuBan.xls"
                         >批量导入留言板数据模板</a>
                         &nbsp;
                         <el-upload

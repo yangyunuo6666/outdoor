@@ -6,9 +6,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 
-/**
- * HttpClient工具类
- */
+//HttpClient工具类
 public class HttpClientUtils {
 
     /**

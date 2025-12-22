@@ -4,7 +4,7 @@
 
             <div :class="2 == 1 ? 'left' : 2 == 2 ? 'left center' : 'left right'">
                 <el-form class="login-form" label-position="left" :label-width="1 == 3 || 1 == 2 ? '30px': '0px'">
-                    <div class="title-container"><h3 class="title">玩具租赁系统登录</h3></div>
+                    <div class="title-container"><h3 class="title">设备租赁系统登录</h3></div>
                     <el-form-item :style='{"padding":"0","boxShadow":"0 0 6px rgba(0,0,0,0)","margin":"0 0 12px 0","borderColor":"rgba(0,0,0,0)","backgroundColor":"rgba(0,0,0,0)","borderRadius":"0","borderWidth":"0","width":"100%","borderStyle":"solid","height":"auto"}' :label="1 == 3 ? '用户名' : ''" :class="'style'+1">
             <span v-if="1 != 3" class="svg-container" style="
 			color:#333;
@@ -230,7 +230,7 @@
         background-repeat: no-repeat;
         background-position: center center;
         background-size: cover;
-        background-image: url(/wanjuzulinxitpng/img/back-img-bg.jpg);
+        background-image: url(/equipmentzulinxitong/img/back-img-bg.jpg);
 
 
     .loginInBt {

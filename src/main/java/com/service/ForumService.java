@@ -8,9 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.lang.Nullable;
 import java.util.List;
 
-/**
- * 论坛 服务类
- */
+//论坛 服务类
 public interface ForumService extends IService<ForumEntity> {
 
     /**

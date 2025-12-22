@@ -60,13 +60,13 @@ public class LiuyanController {
     @Autowired
     private NewsService newsService;//公告信息
     @Autowired
-    private WanjuService wanjuService;//玩具
+    private EquipmentService equipmentService;//设备
     @Autowired
-    private WanjuCollectionService wanjuCollectionService;//玩具收藏
+    private EquipmentCollectionService equipmentCollectionService;//设备收藏
     @Autowired
-    private WanjuCommentbackService wanjuCommentbackService;//玩具评价
+    private EquipmentCommentbackService equipmentCommentbackService;//设备评价
     @Autowired
-    private WanjuOrderService wanjuOrderService;//玩具订单
+    private EquipmentOrderService equipmentOrderService;//设备订单
     @Autowired
     private YonghuService yonghuService;//用户
     @Autowired

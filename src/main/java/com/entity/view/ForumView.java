@@ -15,77 +15,57 @@ import com.utils.DateUtil;
 /**
 * 论坛
 * 后端返回视图实体辅助类
-* （通常后端关联的表或者自定义的字段需要返回使用）
+* 通常后端关联的表或者自定义的字段需要返回使用
 */
 @TableName("forum")
 public class ForumView extends ForumEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	//当前表
-	/**
-	* 帖子状态的值
-	*/
+	//帖子状态的值
 	@ColumnInfo(comment="帖子状态的字典表值",type="varchar(200)")
 	private String forumStateValue;
 
 	//级联表 用户
-		/**
-		* 用户姓名
-		*/
-
+		//用户姓名
 		@ColumnInfo(comment="用户姓名",type="varchar(200)")
 		private String yonghuName;
-		/**
-		* 联系方式
-		*/
 
+		//联系方式
 		@ColumnInfo(comment="联系方式",type="varchar(200)")
 		private String yonghuPhone;
-		/**
-		* 身份证号
-		*/
 
+		//身份证号
 		@ColumnInfo(comment="身份证号",type="varchar(200)")
 		private String yonghuIdNumber;
-		/**
-		* 用户头像
-		*/
 
+		//用户头像
 		@ColumnInfo(comment="用户头像",type="varchar(200)")
 		private String yonghuPhoto;
-		/**
-		* 电子邮箱
-		*/
 
+		//电子邮箱
 		@ColumnInfo(comment="电子邮箱",type="varchar(200)")
 		private String yonghuEmail;
-		/**
-		* 余额
-		*/
+
+		//余额
 		@ColumnInfo(comment="余额",type="decimal(10,2)")
 		private Double newMoney;
 	//级联表 管理员
-		/**
-		* 用户名
-		*/
+		//用户名
 		@ColumnInfo(comment="用户名",type="varchar(100)")
 		private String uusername;
-		/**
-		* 密码
-		*/
+
+		//密码
 		@ColumnInfo(comment="密码",type="varchar(100)")
 		private String upassword;
-		/**
-		* 角色
-		*/
+
+		//角色
 		@ColumnInfo(comment="角色",type="varchar(100)")
 		private String urole;
-		/**
-		* 新增时间
-		*/
+
+		//新增时间
 		@ColumnInfo(comment="新增时间",type="timestamp")
 		private Date uaddtime;
-
 
 
 	public ForumView() {
@@ -102,17 +82,13 @@ public class ForumView extends ForumEntity implements Serializable {
 	}
 
 
-
 	//当前表的
-	/**
-	* 获取： 帖子状态的值
-	*/
+	//获取： 帖子状态的值
 	public String getForumStateValue() {
 		return forumStateValue;
 	}
-	/**
-	* 设置： 帖子状态的值
-	*/
+
+	//设置： 帖子状态的值
 	public void setForumStateValue(String forumStateValue) {
 		this.forumStateValue = forumStateValue;
 	}
@@ -120,129 +96,102 @@ public class ForumView extends ForumEntity implements Serializable {
 
 	//级联表的get和set 用户
 
-		/**
-		* 获取： 用户姓名
-		*/
+		//获取： 用户姓名
 		public String getYonghuName() {
 			return yonghuName;
 		}
-		/**
-		* 设置： 用户姓名
-		*/
+
+		//设置： 用户姓名
 		public void setYonghuName(String yonghuName) {
 			this.yonghuName = yonghuName;
 		}
 
-		/**
-		* 获取： 联系方式
-		*/
+		//获取： 联系方式
 		public String getYonghuPhone() {
 			return yonghuPhone;
 		}
-		/**
-		* 设置： 联系方式
-		*/
+
+		//设置： 联系方式
 		public void setYonghuPhone(String yonghuPhone) {
 			this.yonghuPhone = yonghuPhone;
 		}
 
-		/**
-		* 获取： 身份证号
-		*/
+		//获取： 身份证号
 		public String getYonghuIdNumber() {
 			return yonghuIdNumber;
 		}
-		/**
-		* 设置： 身份证号
-		*/
+
+		//设置： 身份证号
 		public void setYonghuIdNumber(String yonghuIdNumber) {
 			this.yonghuIdNumber = yonghuIdNumber;
 		}
 
-		/**
-		* 获取： 用户头像
-		*/
+		//获取： 用户头像
 		public String getYonghuPhoto() {
 			return yonghuPhoto;
 		}
-		/**
-		* 设置： 用户头像
-		*/
+
+		//设置： 用户头像
 		public void setYonghuPhoto(String yonghuPhoto) {
 			this.yonghuPhoto = yonghuPhoto;
 		}
 
-		/**
-		* 获取： 电子邮箱
-		*/
+		//获取： 电子邮箱
 		public String getYonghuEmail() {
 			return yonghuEmail;
 		}
-		/**
-		* 设置： 电子邮箱
-		*/
+
+		//设置： 电子邮箱
 		public void setYonghuEmail(String yonghuEmail) {
 			this.yonghuEmail = yonghuEmail;
 		}
 
-		/**
-		* 获取： 余额
-		*/
+		//获取： 余额
 		public Double getNewMoney() {
 			return newMoney;
 		}
-		/**
-		* 设置： 余额
-		*/
+
+		//设置： 余额
 		public void setNewMoney(Double newMoney) {
 			this.newMoney = newMoney;
 		}
 	//级联表的get和set 管理员
-		/**
-		* 获取： 用户名
-		*/
+		//获取： 用户名
 		public String getUusername() {
 			return uusername;
 		}
-		/**
-		* 设置： 用户名
-		*/
+
+		//设置： 用户名
 		public void setUusername(String uusername) {
 			this.uusername = uusername;
 		}
-		/**
-		* 获取： 密码
-		*/
+
+		//获取： 密码
 		public String getUpassword() {
 			return upassword;
 		}
-		/**
-		* 设置： 密码
-		*/
+
+		//设置： 密码
 		public void setUpassword(String upassword) {
 			this.upassword = upassword;
 		}
-		/**
-		* 获取： 角色
-		*/
+
+		//获取： 角色
 		public String getUrole() {
 			return urole;
 		}
-		/**
-		* 设置： 角色
-		*/
+
+		//设置： 角色
 		public void setUrole(String urole) {
 			this.urole = urole;
 		}
-		/**
-		* 获取： 新增时间
-		*/
+
+		//获取： 新增时间
 		public Date getUaddtime() {
 			return uaddtime;
 		}
-		/**
-		* 设置： 新增时间
-		*/
+
+		//设置： 新增时间
 		public void setUaddtime(Date uaddtime) {
 			this.uaddtime = uaddtime;
 		}

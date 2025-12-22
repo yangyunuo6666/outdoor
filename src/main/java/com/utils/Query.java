@@ -8,22 +8,17 @@ import org.apache.commons.lang3.StringUtils;
 
 import com.baomidou.mybatisplus.plugins.Page;
 
-/**
- * 查询参数
- */
+//查询参数
 public class Query<T> extends LinkedHashMap<String, Object> {
 	private static final long serialVersionUID = 1L;
-    /**
-     * mybatis-plus分页参数
-     */
+
+    //mybatis-plus分页参数
     private Page<T> page;
-    /**
-     * 当前页码
-     */
+
+    //当前页码
     private int currPage = 1;
-    /**
-     * 每页条数
-     */
+
+    //每页条数
     private int limit = 10;
 
     public Query(JQPageInfo pageInfo) {

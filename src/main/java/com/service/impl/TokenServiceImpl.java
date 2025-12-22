@@ -22,10 +22,7 @@ import com.utils.PageUtils;
 import com.utils.Query;
 
 
-/**
- * token
- * @author
- */
+//token
 @Service("tokenService")
 public class TokenServiceImpl extends ServiceImpl<TokenDao, TokenEntity> implements TokenService {
 

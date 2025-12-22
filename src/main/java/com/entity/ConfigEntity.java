@@ -6,11 +6,7 @@ import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.annotations.TableName;
 import com.baomidou.mybatisplus.enums.IdType;
 
-/**
-* @author yangliyuan
-* @version 创建时间：2020年2月7日 下午8:36:05
-* 类说明 : 
-*/
+
 @TableName("config")
 public class ConfigEntity implements Serializable{
 private static final long serialVersionUID = 1L;
@@ -18,14 +14,10 @@ private static final long serialVersionUID = 1L;
 	@TableId(type = IdType.AUTO)
 	private Long id;
 	
-	/**
-	 * key
-	 */
+	//key
 	private String name;
 	
-	/**
-	 * value
-	 */
+	//value
 	private String value;
 
 	public Long getId() {

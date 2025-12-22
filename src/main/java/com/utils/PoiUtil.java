@@ -12,9 +12,7 @@ import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * 文件导入到处
- */
+//文件导入到处
 public class PoiUtil {
     /**
      * 导入

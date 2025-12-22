@@ -5,9 +5,7 @@ import org.apache.commons.lang3.StringUtils;
 
 import com.entity.EIException;
 
-/**
- * SQL过滤
- */
+//SQL过滤
 public class SQLFilter {
 
     /**

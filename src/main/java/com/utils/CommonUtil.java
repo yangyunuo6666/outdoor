@@ -2,9 +2,7 @@ package com.utils;
 
 import java.util.*;
 
-/**
- * 公共方法
- */
+//公共方法
 public class CommonUtil {
 	/**
      * 获取随机字符串

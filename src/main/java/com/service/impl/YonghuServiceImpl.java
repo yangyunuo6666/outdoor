@@ -23,9 +23,7 @@ import com.entity.YonghuEntity;
 import com.service.YonghuService;
 import com.entity.view.YonghuView;
 
-/**
- * 用户 服务实现类
- */
+//用户 服务实现类
 @Service("yonghuService")
 @Transactional
 public class YonghuServiceImpl extends ServiceImpl<YonghuDao, YonghuEntity> implements YonghuService {

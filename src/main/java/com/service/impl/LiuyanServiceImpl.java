@@ -23,9 +23,7 @@ import com.entity.LiuyanEntity;
 import com.service.LiuyanService;
 import com.entity.view.LiuyanView;
 
-/**
- * 留言板 服务实现类
- */
+// 留言板 服务实现类
 @Service("liuyanService")
 @Transactional
 public class LiuyanServiceImpl extends ServiceImpl<LiuyanDao, LiuyanEntity> implements LiuyanService {

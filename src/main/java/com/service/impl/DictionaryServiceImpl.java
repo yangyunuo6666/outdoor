@@ -23,9 +23,7 @@ import com.entity.DictionaryEntity;
 import com.service.DictionaryService;
 import com.entity.view.DictionaryView;
 
-/**
- * 字典 服务实现类
- */
+//字典 服务实现类
 @Service("dictionaryService")
 @Transactional
 public class DictionaryServiceImpl extends ServiceImpl<DictionaryDao, DictionaryEntity> implements DictionaryService {

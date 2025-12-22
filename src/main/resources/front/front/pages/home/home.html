@@ -284,26 +284,26 @@
 <div class="title main_backgroundColor"
      :style='{"padding":"10px 0 10px 10px","boxShadow":"0 0 5px rgba(2, 93, 172, 1)","margin":"10px 0","color":"rgba(255, 255, 255, 1)","borderRadius":"20px","alignItems":"center","borderWidth":"0","fontSize":"16px","borderStyle":"solid"}'>
          <span>DATA SHOW</span>
-    <span>玩具展示</span>
+    <span>设备展示</span>
 </div>
                             </div>
                             <div class="wow " data-wow-duration="2s" data-wow-delay="1s">
                 <div class="list">
-                    <div v-for="(item,index) in wanjuList" :key="index"
-                         @click="jump('../wanju/detail.html?id='+item.id)" class="list-item"
+                    <div v-for="(item,index) in equipmentList" :key="index"
+                         @click="jump('../equipment/detail.html?id='+item.id)" class="list-item"
                          :class="4=='3'?'list-item3':4=='4'?'list-item4':''">
                         <div class="list-item-body animation-box"
                              :style='{"padding":"0px 0 6px 0","boxShadow":"","margin":"20px 4px","borderColor":"rgba(0,0,0,.3)","backgroundColor":"#fff","borderRadius":"4px","borderWidth":"0","borderStyle":"solid"}'>
                             <img class="sub_borderColor" :style='{"borderColor":"rgba(0,0,0,.3)","borderRadius":"100%","borderWidth":"0","width":"220px","borderStyle":"solid","height":"220px"}'
-                                 :src="item.wanjuPhoto?baseUrl+item.wanjuPhoto.split(',')[0]:''" alt=""/>
+                                 :src="item.equipmentPhoto?baseUrl+item.equipmentPhoto.split(',')[0]:''" alt=""/>
                             <div v-if='true'
                                  :style='{"isshow":true,"padding":"2px","margin":"8px 0 0 0","backgroundColor":"rgba(255, 255, 255, 0.2)","color":"rgba(51, 51, 51, 1)","borderRadius":"0 0 6px 6px","textAlign":"center","fontSize":"20px"}'
-                                 class="name">{{item.wanjuName}}
+                                 class="name">{{item.equipmentName}}
                             </div>
                         </div>
                     </div>
                 </div>                                <div style="text-align: center;margin-top: 40px;">
-                                    <button @click="jump('../wanju/list.html')" style="display: block;cursor: pointer;" type="button"
+                                    <button @click="jump('../equipment/list.html')" style="display: block;cursor: pointer;" type="button"
                                             :style='{"padding":"0 15px","boxShadow":"0 0 6px rgba(255,0,0,0)","margin":"4px auto","borderColor":"#ccc","backgroundColor":"#fff","color":"rgba(160, 67, 26, 1)","borderRadius":"6px","borderWidth":"0","width":"auto","fontSize":"14px","borderStyle":"solid","height":"34px"}'>
                                         查看更多
                                         <i :style='{"isshow":true,"padding":"0 0 0 1px","fontSize":"14px","color":"rgba(160, 67, 26, 1)"}' class="layui-icon layui-icon-next"></i>
@@ -350,11 +350,11 @@
             // dianyingRecommend: [],
             newsList: [],
             newsTypesList: [],
-            wanjuList: [],
-            wanjuTypesList: [],
+            equipmentList: [],
+            equipmentTypesList: [],
             //类型查询条件
             newsTypes: "",
-            wanjuTypes: "",
+            equipmentTypes: "",
         },
         filters: {
             newsDesc: function (val) {
@@ -448,13 +448,13 @@
             newsSelect();
         });
         newsTypesSelect();//类型查询
-        wanjuSelect();
+        equipmentSelect();
         //类型动态搜索
-        $(document).on("click", ".wanjuTypes-search", function(e) {
-            vue.wanjuTypes = $(this).attr('index');
-            wanjuSelect();
+        $(document).on("click", ".equipmentTypes-search", function(e) {
+            vue.equipmentTypes = $(this).attr('index');
+            equipmentSelect();
         });
-        wanjuTypesSelect();//类型查询
+        equipmentTypesSelect();//类型查询
 
         function newsTypesSelect() {//类型查询
             http.request("dictionary/page?page=1&limit=100&sort=&order=&dicCode=news_types",'get',{},function(res) {
@@ -471,22 +471,22 @@
                 vue.newsList = res.data.list;
             })
         };
-        function wanjuTypesSelect() {//类型查询
-            http.request("dictionary/page?page=1&limit=100&sort=&order=&dicCode=wanju_types",'get',{},function(res) {
-                if (res.code == 0) {vue.wanjuTypesList = res.data.list;}
+        function equipmentTypesSelect() {//类型查询
+            http.request("dictionary/page?page=1&limit=100&sort=&order=&dicCode=equipment_types",'get',{},function(res) {
+                if (res.code == 0) {vue.equipmentTypesList = res.data.list;}
             });
         }
-        function wanjuSelect(){//数据查询
-            http.request('wanju/gexingtuijian', 'get', {
+        function equipmentSelect(){//数据查询
+            http.request('equipment/gexingtuijian', 'get', {
                 page: 1,
                 limit: 8,
-                sort: "wanju_clicknum",//字段
+                sort: "equipment_clicknum",//字段
                 shangxiaTypes: 1,
-                wanjuDelete: 1,
-                wanjuTypes: vue.wanjuTypes,//类型
+                equipmentDelete: 1,
+                equipmentTypes: vue.equipmentTypes,//类型
                 order: "desc",//asc desc
             },function (res) {
-                vue.wanjuList = res.data.list;
+                vue.equipmentList = res.data.list;
             })
         };
 

@@ -8,9 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.lang.Nullable;
 import java.util.List;
 
-/**
- * 公告信息 服务类
- */
+//公告信息 服务类
 public interface NewsService extends IService<NewsEntity> {
 
     /**

@@ -8,9 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.lang.Nullable;
 import java.util.List;
 
-/**
- * 用户 服务类
- */
+//用户 服务类
 public interface YonghuService extends IService<YonghuEntity> {
 
     /**

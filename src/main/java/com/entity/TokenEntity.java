@@ -7,9 +7,7 @@ import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.annotations.TableName;
 import com.baomidou.mybatisplus.enums.IdType;
 
-/** 
- * token表
- */
+//token表
 @TableName("token")
 public class TokenEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -17,39 +15,25 @@ public class TokenEntity implements Serializable {
 	@TableId(type = IdType.AUTO)
 	private Integer id;
 	
-	/**
-	 * 用户id
-	 */
+	//用户id
 	private Integer userid;
 	
-	/**
-	 * 用户名
-	 */
+	//用户名
 	private String username;
 	
-	/**
-	 * 表名
-	 */
+	//表名
 	private String tablename;
 	
-	/**
-	 * 角色
-	 */
+	//角色
 	private String role;
 	
-	/**
-	 * token
-	 */
+	//token
 	private String token;
 	
-	/**
-	 * 过期时间
-	 */
+	//过期时间
 	private Date expiratedtime;
 	
-	/**
-	 * 新增时间
-	 */
+	//新增时间
 	private Date addtime;
 
 	public Integer getId() {

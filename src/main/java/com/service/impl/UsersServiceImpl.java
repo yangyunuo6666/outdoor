@@ -18,10 +18,7 @@ import com.utils.PageUtils;
 import com.utils.Query;
 
 
-/**
- * 系统用户
- * @author
- */
+//Root用户
 @Service("userService")
 public class UsersServiceImpl extends ServiceImpl<UsersDao, UsersEntity> implements UsersService {
 

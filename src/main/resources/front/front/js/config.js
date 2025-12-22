@@ -33,16 +33,16 @@ var centerMenu = [
         url: '../' + localStorage.getItem('userTable') + '/center.html'
     }
     ,{
-        name: '玩具收藏',
-        url: '../wanjuCollection/list.html'
+        name: '设备收藏',
+        url: '../equipmentCollection/list.html'
     }
     ,{
-        name: '玩具评价',
-        url: '../wanjuCommentback/list.html'
+        name: '设备评价',
+        url: '../equipmentCommentback/list.html'
     }
     ,{
-        name: '玩具订单',
-        url: '../wanjuOrder/list.html'
+        name: '设备订单',
+        url: '../equipmentOrder/list.html'
     }
 
 ]
@@ -51,8 +51,8 @@ var centerMenu = [
 var indexNav = [
 
     {
-        name: '玩具',
-        url: './pages/wanju/list.html'
+        name: '设备',
+        url: './pages/equipment/list.html'
     },
     {
         name: '论坛',
@@ -70,7 +70,7 @@ var indexNav = [
 ]
 
 // 已废弃,不用了
-var adminurl =  "http://localhost:8080/wanjuzulinxitpng/admin/dist/index.html#/login";
+var adminurl =  "http://localhost:8080/equipmentzulinxitong/admin/dist/index.html#/login";
 
 
 
