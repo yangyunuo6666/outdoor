@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.plugins.Page;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
-import com.dao.ConfigDao;
+import com.mapper.ConfigDao;
 import com.entity.ConfigEntity;
 import com.service.ConfigService;
 import com.utils.PageUtils;

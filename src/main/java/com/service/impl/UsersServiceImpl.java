@@ -12,7 +12,7 @@ import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.baomidou.mybatisplus.plugins.Page;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
-import com.dao.UsersDao;
+import com.mapper.UsersDao;
 import com.entity.UsersEntity;
 import com.utils.PageUtils;
 import com.utils.Query;

@@ -21,7 +21,7 @@ public class InterceptorConfig extends WebMvcConfigurationSupport{
         registry.addInterceptor(getAuthorizationInterceptor())
 				//.addPathPatterns("/**")
 				.excludePathPatterns(
-						// ===== Swagger 2.x UI 核心路径（必加）=====
+						// ===== Swagger 2.x UI 核心路径 =====
 						"/swagger-ui.html",          // UI主页面
 						"/swagger-resources/**",     // 配置元数据（含子路径）
 						"/swagger-resources/configuration/ui", // UI配置请求
@@ -41,7 +41,7 @@ public class InterceptorConfig extends WebMvcConfigurationSupport{
 	@Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
 
-		// ===== 新增：Swagger 2.x 核心静态资源映射（解决404关键）=====
+		// ===== 新增：Swagger 2.x 核心静态资源映射 =====
 		registry.addResourceHandler("swagger-ui.html")
 				.addResourceLocations("classpath:/META-INF/resources/");
 		registry.addResourceHandler("/webjars/**")

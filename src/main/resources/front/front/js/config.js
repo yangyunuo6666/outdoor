@@ -1,4 +1,4 @@
-var projectName = '玩具租赁系统';
+var projectName = '露营设备租赁系统';
 /**
  * 轮播图配置
  */

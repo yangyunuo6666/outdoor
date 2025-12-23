@@ -9,8 +9,8 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
 
 @SpringBootApplication
 @ServletComponentScan(value = "com.ServletContextListener")
-@MapperScan(basePackages = {"com.dao"})
-public class equipmentzulinxitongApplication extends SpringBootServletInitializer{
+@MapperScan(basePackages = {"com.mapper"})
+public class  equipmentzulinxitongApplication extends SpringBootServletInitializer{
 
 	public static void main(String[] args) {
 		SpringApplication.run(equipmentzulinxitongApplication.class, args);

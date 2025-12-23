@@ -8,7 +8,7 @@ import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import org.springframework.transaction.annotation.Transactional;
 import com.utils.PageUtils;
 import com.utils.Query;
-import com.dao.EquipmentDao;
+import com.mapper.EquipmentDao;
 import com.entity.EquipmentEntity;
 import com.service.EquipmentService;
 import com.entity.view.EquipmentView;

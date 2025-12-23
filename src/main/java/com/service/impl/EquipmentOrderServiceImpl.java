@@ -8,7 +8,7 @@ import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import org.springframework.transaction.annotation.Transactional;
 import com.utils.PageUtils;
 import com.utils.Query;
-import com.dao.EquipmentOrderDao;
+import com.mapper.EquipmentOrderDao;
 import com.entity.EquipmentOrderEntity;
 import com.service.EquipmentOrderService;
 import com.entity.view.EquipmentOrderView;

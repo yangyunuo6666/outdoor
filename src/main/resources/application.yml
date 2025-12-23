@@ -5,11 +5,8 @@ server:
     port: 8080
     servlet:
         context-path: /equipmentzulinxitong
-                      #/wanjuzulinxitpng
-#项目无法运行时可以访问此链接购买 远程部署服务，链接失效时淘宝搜索 源人部落工作室 即可
-#淘宝有专属客服回复更快，效率更高哦
-#https://a3u7kccwnrznynz707boifuzz5nah15.taobao.com/
-#也可以加qq 2553201451 或者 qq 1528790699
+
+
 spring:
     datasource:
         driverClassName: com.mysql.cj.jdbc.Driver

@@ -8,7 +8,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.dao.CommonDao;
+import com.mapper.CommonDao;
 import com.service.CommonService;
 
 

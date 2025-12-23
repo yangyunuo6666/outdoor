@@ -8,7 +8,7 @@ import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import org.springframework.transaction.annotation.Transactional;
 import com.utils.PageUtils;
 import com.utils.Query;
-import com.dao.EquipmentCommentbackDao;
+import com.mapper.EquipmentCommentbackDao;
 import com.entity.EquipmentCommentbackEntity;
 import com.service.EquipmentCommentbackService;
 import com.entity.view.EquipmentCommentbackView;
