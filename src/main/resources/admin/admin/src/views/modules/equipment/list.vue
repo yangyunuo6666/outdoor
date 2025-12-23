@@ -58,7 +58,7 @@
                         <a style="text-decoration:none" class="el-button el-button--success"
                            v-if="isAuth('equipment','导入导出')"
                            icon="el-icon-download"
-                           href="http://localhost:8080/equipmentzulinxitong/upload/equipmentMuBan.xls"
+                           href="https://localhost:8443/equipmentzulinxitong/upload/equipmentMuBan.xls"
                         >批量导入设备数据模板</a>
                         &nbsp;
                         <el-upload

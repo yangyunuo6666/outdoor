@@ -70,7 +70,7 @@ var indexNav = [
 ]
 
 // 已废弃,不用了
-var adminurl =  "http://localhost:8080/equipmentzulinxitong/admin/dist/index.html#/login";
+var adminurl =  "https://localhost:8443/equipmentzulinxitong/admin/dist/index.html#/login";
 
 
 

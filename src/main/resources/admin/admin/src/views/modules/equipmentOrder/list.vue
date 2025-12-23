@@ -80,7 +80,7 @@
                         <a style="text-decoration:none" class="el-button el-button--success"
                            v-if="isAuth('equipmentOrder','导入导出')"
                            icon="el-icon-download"
-                           href="http://localhost:8080/equipmentzulinxitong/upload/equipmentOrderMuBan.xls"
+                           href="https://localhost:8443/equipmentzulinxitong/upload/equipmentOrderMuBan.xls"
                         >批量导入设备订单数据模板</a>
                         &nbsp;
                         <el-upload

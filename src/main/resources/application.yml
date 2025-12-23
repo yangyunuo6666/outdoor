@@ -2,9 +2,18 @@
 server:
     tomcat:
         uri-encoding: UTF-8
-    port: 8080
+    port: 8443
     servlet:
         context-path: /equipmentzulinxitong
+    ssl:
+      key-store: classpath:keystore.p12
+      key-store-password: 2025root
+      key-store-type: PKCS12
+      key-alias: tomcat
+      enabled: true
+
+
+
 
 
 spring:
@@ -14,13 +23,14 @@ spring:
         username: root
         password: root
 
-
     servlet:
       multipart:
         max-file-size: 1000MB
         max-request-size: 1000MB
     resources:
       static-locations: classpath:static/,file:static/
+
+
 
 #mybatis
 mybatis-plus:

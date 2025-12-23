@@ -1,10 +1,10 @@
 const base = {
     get() {
         return {
-            url : "http://localhost:8080/equipmentzulinxitong/",
+            url : "https://localhost:8443/equipmentzulinxitong/",
             name: "equipmentzulinxitong",
             // 退出到首页链接
-            indexUrl: 'http://localhost:8080/equipmentzulinxitoog/front/index.html'
+            indexUrl: 'https://localhost:8443/equipmentzulinxitoog/front/index.html'
         };
     },
     getProjectName(){
