@@ -17,4 +17,7 @@ public interface YonghuService extends IService<YonghuEntity> {
     */
      PageUtils queryPage(Map<String, Object> params);
 
+    // 新增：根据用户名查询用户
+    YonghuEntity selectByUsername(String username);
+
 }

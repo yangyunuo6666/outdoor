@@ -12,7 +12,12 @@ server:
       key-alias: tomcat
       enabled: true
 
-
+# 加密配置（新增：MD5盐值 + AES密钥）
+encrypt:
+  # MD5固定盐值（可自定义，建议长度8-16位）
+  md5-salt: "M2025D125140"
+  # AES密钥（必须16位，自定义修改）
+  aes-key: "2025a12a14sbzlxt"
 
 
 

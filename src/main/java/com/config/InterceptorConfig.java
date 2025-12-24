@@ -19,7 +19,7 @@ public class InterceptorConfig extends WebMvcConfigurationSupport{
 	@Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(getAuthorizationInterceptor())
-				//.addPathPatterns("/**")
+				///.addPathPatterns("/**")
 				.excludePathPatterns(
 						// ===== Swagger 2.x UI 核心路径 =====
 						"/swagger-ui.html",          // UI主页面

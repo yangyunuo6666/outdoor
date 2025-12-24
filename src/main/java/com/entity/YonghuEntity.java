@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.lang.reflect.InvocationTargetException;
 import java.io.Serializable;
 import java.util.*;
+
 import org.apache.tools.ant.util.DateUtils;
 import org.springframework.format.annotation.DateTimeFormat;
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -54,7 +55,7 @@ public class YonghuEntity<T> implements Serializable {
 
 
     //密码
-    @ColumnInfo(comment="密码",type="varchar(200)")
+    @ColumnInfo(comment="密码",type="varchar(512)")
     @TableField(value = "password")
 
     private String password;
@@ -75,9 +76,10 @@ public class YonghuEntity<T> implements Serializable {
 
 
     //身份证号
-    @ColumnInfo(comment="身份证号",type="varchar(200)")
+    @ColumnInfo(comment="身份证号",type="varchar(255)")
     @TableField(value = "yonghu_id_number")
-
+    // 身份证号字段（使用类型处理器自动加解密）
+    ///@TableField(value = "yonghu_id_number",typeHandler = IdCardTypeHandler.class)
     private String yonghuIdNumber;
 
 

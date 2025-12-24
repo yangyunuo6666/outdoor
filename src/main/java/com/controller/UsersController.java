@@ -8,6 +8,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 
 import com.service.UsersService;
+import com.utils.MyMD5Utils;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,13 +43,20 @@ public class UsersController {
     @Autowired
     private ApiOperationReader apiOperationReader;
 
+	//加密工具，用于登录时密文比对
+	@Autowired
+	private MyMD5Utils Mymd5Utils;
+
 	//登录
 	@ApiOperation(value="管理员登录",notes = "根据账户比对密码")
 	@IgnoreAuth
 	@PostMapping(value = "/login")
 	public R login(String username, String password, String captcha, HttpServletRequest request) {
 		UsersEntity user = usersService.selectOne(new EntityWrapper<UsersEntity>().eq("username", username));
-		if(user==null || !user.getPassword().equals(password)) {
+		if(user==null)
+			return R.error("账号不存在");
+		String encryptedInput = Mymd5Utils.md5WithSalt(password);
+		if (!user.getPassword().equals(encryptedInput)) {
 			return R.error("账号或密码不正确");
 		}
 		String token = tokenService.generateToken(user.getId(),username, "users", user.getRole());
@@ -65,6 +73,15 @@ public class UsersController {
 	@PostMapping(value = "/register")
 	public R register(@RequestBody UsersEntity user){
 //    	ValidatorUtils.validateEntity(user);
+		//密码加密处理
+		String password = user.getPassword();
+		// 如果传了密码，判断是否需要加密
+		if (password != null && !password.trim().isEmpty()) {
+			// 前端传了密码，非密文则加密
+			if (!password.matches("[a-f0-9]{32}")) {
+				user.setPassword(MyMD5Utils.md5WithSalt(password));
+			}
+		}
     	if(usersService.selectOne(new EntityWrapper<UsersEntity>().eq("username", user.getUsername())) !=null) {
     		return R.error("用户已存在");
     	}
@@ -83,16 +100,17 @@ public class UsersController {
 	@GetMapping(value = "/updatePassword")
 	public R updatePassword(String  oldPassword, String  newPassword, HttpServletRequest request) {
 		UsersEntity users = usersService.selectById((Integer)request.getSession().getAttribute("userId"));
-		if(newPassword == null){
+		if(newPassword == null&& !newPassword.trim().isEmpty()){
 			return R.error("新密码不能为空") ;
 		}
-		if(!oldPassword.equals(users.getPassword())){
+		if(!MyMD5Utils.md5WithSalt(oldPassword).equals(users.getPassword())){
 			return R.error("原密码输入错误");
 		}
-		if(newPassword.equals(users.getPassword())){
+		if(MyMD5Utils.md5WithSalt(newPassword).equals(users.getPassword())){
 			return R.error("新密码不能和原密码一致") ;
 		}
-		users.setPassword(newPassword);
+		users.setPassword(MyMD5Utils.md5WithSalt(newPassword));
+
 		usersService.updateById(users);
 		return R.ok();
 	}
@@ -106,7 +124,9 @@ public class UsersController {
     	if(user==null) {
     		return R.error("账号不存在");
     	}
-    	user.setPassword("123456");
+    	//user.setPassword("123456");
+		user.setPassword(MyMD5Utils.md5WithSalt("123456"));
+
         usersService.update(user,null);
         return R.ok("密码已重置为：123456");
     }
@@ -146,6 +166,16 @@ public class UsersController {
     @PostMapping("/save")
     public R save(@RequestBody UsersEntity user){
 //    	ValidatorUtils.validateEntity(user);
+		//密码加密处理
+		String password = user.getPassword();
+		// 如果传了密码，判断是否需要加密
+		if (password != null && !password.trim().isEmpty()) {
+			// 前端传了密码，非密文则加密
+			if (!password.matches("[a-f0-9]{32}")) {
+				user.setPassword(MyMD5Utils.md5WithSalt(password));
+			}
+		}
+
     	if(usersService.selectOne(new EntityWrapper<UsersEntity>().eq("username", user.getUsername())) !=null) {
     		return R.error("用户已存在");
     	}
@@ -157,6 +187,14 @@ public class UsersController {
     @RequestMapping("/update")
     public R update(@RequestBody UsersEntity user){
 //        ValidatorUtils.validateEntity(user);
+		// 密码加密处理
+		String Password = user.getPassword();
+		if (Password != null && !Password.trim().isEmpty()) {
+			// 密码非密文时加密
+			if (!Password.matches("[a-f0-9]{32}")) {
+				user.setPassword(MyMD5Utils.md5WithSalt(Password));
+			}
+		}
         usersService.updateById(user);//全部更新
         return R.ok();
     }

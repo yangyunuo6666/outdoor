@@ -12,6 +12,8 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.BeanUtils;
 import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.context.ContextLoader;
 import javax.servlet.ServletContext;
 import com.service.TokenService;
@@ -49,6 +51,13 @@ public class YonghuController {
     @Autowired
     private YonghuService yonghuService;
 
+    //加密工具，用于登录时密文比对
+    @Autowired
+    private MyMD5Utils Mymd5Utils;
+
+    //对称加密工具
+    @Autowired
+    private AESUtils AESUtils;
 
     @Autowired
     private TokenService tokenService;
@@ -87,9 +96,15 @@ public class YonghuController {
 
         //字典表数据转换
         List<YonghuView> list =(List<YonghuView>)page.getList();
-        for(YonghuView c:list){
-            //修改对应字典表字段
+        for (YonghuView c : list) {
+            // 字典转换
             dictionaryService.dictionaryConvert(c, request);
+            // 解密身份证号
+            String encryptedIdNumber = c.getYonghuIdNumber();
+            if (encryptedIdNumber != null && !encryptedIdNumber.trim().isEmpty()) {
+                String decryptedIdNumber = AESUtils.decrypt(encryptedIdNumber);
+                c.setYonghuIdNumber(decryptedIdNumber);
+            }
         }
         return R.ok().put("data", page);
     }
@@ -105,6 +120,12 @@ public class YonghuController {
             BeanUtils.copyProperties( yonghu , view );//把实体数据重构到view中
             //修改对应字典表字段
             dictionaryService.dictionaryConvert(view, request);
+            // 解密身份证号
+            String encryptedIdNumber = view.getYonghuIdNumber();
+            if (encryptedIdNumber != null && !encryptedIdNumber.trim().isEmpty()) {
+                String decryptedIdNumber = AESUtils.decrypt(encryptedIdNumber);
+                view.setYonghuIdNumber(decryptedIdNumber);
+            }
             return R.ok().put("data", view);
         }else {
             return R.error(511,"查不到数据");
@@ -120,6 +141,23 @@ public class YonghuController {
         String role = String.valueOf(request.getSession().getAttribute("role"));
         if(false)
             return R.error(511,"永远不会进入");
+
+        // 对身份证号进行加密处理
+        String idNumber = yonghu.getYonghuIdNumber();
+        if (idNumber != null && !idNumber.trim().isEmpty()) {
+            String encryptedIdNumber = AESUtils.encrypt(idNumber);
+            yonghu.setYonghuIdNumber(encryptedIdNumber);
+        }
+
+        //密码加密处理
+        String password = yonghu.getPassword();
+        // 如果传了密码，判断是否需要加密
+        if (password != null && !password.trim().isEmpty()) {
+            // 前端传了密码，非密文则加密
+            if (!password.matches("[a-f0-9]{32}")) {
+                yonghu.setPassword(MyMD5Utils.md5WithSalt(password));
+            }
+        }
 
         Wrapper<YonghuEntity> queryWrapper = new EntityWrapper<YonghuEntity>()
             .eq("username", yonghu.getUsername())
@@ -152,6 +190,26 @@ public class YonghuController {
 //            return R.error(511,"永远不会进入");
         if("".equals(yonghu.getYonghuPhoto()) || "null".equals(yonghu.getYonghuPhoto())){
                 yonghu.setYonghuPhoto(null);
+        }
+
+        // 对新的身份证号进行加密处理
+        String newIdNumber = yonghu.getYonghuIdNumber();
+        if (newIdNumber != null && !newIdNumber.trim().isEmpty()) {
+            // 如果身份证号有变更才进行加密
+            if (!newIdNumber.equals(oldYonghuEntity.getYonghuIdNumber())) {
+                String encryptedIdNumber = AESUtils.encrypt(newIdNumber);
+                yonghu.setYonghuIdNumber(encryptedIdNumber);
+            }
+        }
+
+        // 密码加密处理
+        String newPassword = yonghu.getPassword();
+        if (newPassword != null && !newPassword.trim().isEmpty()) {
+            // 新密码与原密码不同，且非密文时加密
+            if (!newPassword.equals(oldYonghuEntity.getPassword())
+                    && !newPassword.matches("[a-f0-9]{32}")) {
+                yonghu.setPassword(MyMD5Utils.md5WithSalt(newPassword));
+            }
         }
 
             yonghuService.updateById(yonghu);//根据id更新
@@ -209,6 +267,12 @@ public class YonghuController {
 //                            yonghuEntity.setYonghuEmail(data.get(0));                    //电子邮箱 要改的
 //                            yonghuEntity.setNewMoney(data.get(0));                    //余额 要改的
 //                            yonghuEntity.setCreateTime(date);//时间
+                            // 处理身份证号加密（假设data.get(3)是身份证号所在列）
+//                            String idNumber = data.get(3);
+//                            if (idNumber != null && !idNumber.trim().isEmpty()) {
+//                                String encryptedIdNumber = AESUtils.encrypt(idNumber);
+//                                yonghuEntity.setYonghuIdNumber(encryptedIdNumber);
+//                            }
                             yonghuList.add(yonghuEntity);
 
 
@@ -286,8 +350,13 @@ public class YonghuController {
     @RequestMapping(value = "/login")
     public R login(String username, String password, String captcha, HttpServletRequest request) {
         YonghuEntity yonghu = yonghuService.selectOne(new EntityWrapper<YonghuEntity>().eq("username", username));
-        if(yonghu==null || !yonghu.getPassword().equals(password))
+        //System.out.println("数据库查到用户密码："+yonghu.getPassword());
+        if(yonghu==null)
+            return R.error("账号不存在");
+        String encryptedInput = Mymd5Utils.md5WithSalt(password);
+        if (!yonghu.getPassword().equals(encryptedInput)) {
             return R.error("账号或密码不正确");
+        }
         String token = tokenService.generateToken(yonghu.getId(),username, "yonghu", "用户");
         R r = R.ok();
         r.put("token", token);
@@ -303,6 +372,15 @@ public class YonghuController {
     @PostMapping(value = "/register")
     public R register(@RequestBody YonghuEntity yonghu, HttpServletRequest request) {
 //    	ValidatorUtils.validateEntity(user);
+        //密码加密处理
+        String password = yonghu.getPassword();
+        // 如果传了密码，判断是否需要加密
+        if (password != null && !password.trim().isEmpty()) {
+            // 前端传了密码，非密文则加密
+            if (!password.matches("[a-f0-9]{32}")) {
+                yonghu.setPassword(MyMD5Utils.md5WithSalt(password));
+            }
+        }
         Wrapper<YonghuEntity> queryWrapper = new EntityWrapper<YonghuEntity>()
             .eq("username", yonghu.getUsername())
             .or()
@@ -324,7 +402,8 @@ public class YonghuController {
     @GetMapping(value = "/resetPassword")
     public R resetPassword(Integer  id, HttpServletRequest request) {
         YonghuEntity yonghu = yonghuService.selectById(id);
-        yonghu.setPassword("123456");
+        // yonghu.setPassword("123456");
+        yonghu.setPassword(MyMD5Utils.md5WithSalt("123456"));
         yonghuService.updateById(yonghu);
         return R.ok();
     }
@@ -333,16 +412,18 @@ public class YonghuController {
 	@GetMapping(value = "/updatePassword")
 	public R updatePassword(String  oldPassword, String  newPassword, HttpServletRequest request) {
         YonghuEntity yonghu = yonghuService.selectById((Integer)request.getSession().getAttribute("userId"));
-		if(newPassword == null){
+
+
+		if(newPassword == null&& !newPassword.trim().isEmpty()){
 			return R.error("新密码不能为空") ;
 		}
-		if(!oldPassword.equals(yonghu.getPassword())){
+		if(!MyMD5Utils.md5WithSalt(oldPassword).equals(yonghu.getPassword())){
 			return R.error("原密码输入错误");
 		}
-		if(newPassword.equals(yonghu.getPassword())){
+		if(MyMD5Utils.md5WithSalt(newPassword).equals(yonghu.getPassword())){
 			return R.error("新密码不能和原密码一致") ;
 		}
-        yonghu.setPassword(newPassword);
+        yonghu.setPassword(MyMD5Utils.md5WithSalt(newPassword));
 		yonghuService.updateById(yonghu);
 		return R.ok();
 	}
@@ -376,6 +457,11 @@ public class YonghuController {
 
             //修改对应字典表字段
             dictionaryService.dictionaryConvert(view, request);
+            String encryptedIdNumber = view.getYonghuIdNumber();
+            if (encryptedIdNumber != null && !encryptedIdNumber.trim().isEmpty()) {
+                String decryptedIdNumber = AESUtils.decrypt(encryptedIdNumber);
+                view.setYonghuIdNumber(decryptedIdNumber);
+            }
             return R.ok().put("data", view);
         }else {
             return R.error(511,"查不到数据");
@@ -423,6 +509,7 @@ public class YonghuController {
 
                 //修改对应字典表字段
                 dictionaryService.dictionaryConvert(view, request);
+
                 return R.ok().put("data", view);
             }else {
                 return R.error(511,"查不到数据");

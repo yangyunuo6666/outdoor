@@ -3,11 +3,18 @@
 
 <mapper namespace="com.mapper.UsersDao">
 
-    <select id="selectListView"
-		resultType="com.entity.UsersEntity" >
+	<select id="selectListView"
+			resultType="com.entity.UsersEntity" >
 
 		SELECT  u.* FROM users  u
-        <where> 1=1 ${ew.sqlSegment}</where>
+		<where> 1=1 ${ew.sqlSegment}</where>
 	</select>
-	
+
+	<!-- 新增：根据管理员用户名查询（用于登录认证，返回完整管理员信息） -->
+	<select id="selectByAdminUsername" resultType="com.entity.UsersEntity">
+		SELECT u.*
+		FROM users u
+		WHERE u.username = #{username}
+	</select>
+
 </mapper>
