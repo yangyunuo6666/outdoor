@@ -54,7 +54,7 @@ public class EquipmentCollectionController {
     @Autowired
     private LiuyanService liuyanService;//留言板
     @Autowired
-    private NewsService newsService;//公告信息
+    private NewsService newsService;//通知信息
     @Autowired
     private EquipmentService equipmentService;//设备
     @Autowired

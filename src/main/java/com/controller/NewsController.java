@@ -36,7 +36,7 @@ import com.utils.R;
 import com.alibaba.fastjson.*;
 
 
-@Api(tags = "公告信息接口")
+@Api(tags = "通知信息接口")
 @RestController
 @Controller
 @RequestMapping("/news")
@@ -195,8 +195,8 @@ public class NewsController {
                         for(List<String> data:dataList){
                             //循环
                             NewsEntity newsEntity = new NewsEntity();
-//                            newsEntity.setNewsName(data.get(0));                    //公告标题 要改的
-//                            newsEntity.setNewsTypes(Integer.valueOf(data.get(0)));   //公告类型 要改的
+//                            newsEntity.setNewsName(data.get(0));                    //通知标题 要改的
+//                            newsEntity.setNewsTypes(Integer.valueOf(data.get(0)));   //通知类型 要改的
 //                            newsEntity.setNewsPhoto("");//详情和图片
 //                            newsEntity.setInsertTime(date);//时间
 //                            newsEntity.setNewsContent("");//详情和图片

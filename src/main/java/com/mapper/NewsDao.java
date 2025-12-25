@@ -10,7 +10,7 @@ import org.apache.ibatis.annotations.Param;
 import com.entity.view.NewsView;
 
 /**
- * 公告信息 Dao 接口
+ * 通知信息 Dao 接口
  *
  * @author 
  */

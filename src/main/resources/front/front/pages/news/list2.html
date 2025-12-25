@@ -2,7 +2,7 @@
 <html>
 <head lang="en">
     <meta charset="utf-8">
-    <title>公告信息</title>
+    <title>通知信息</title>
     <meta name="keywords" content=""/>
     <meta name="description" content=""/>
     <meta name="renderer" content="webkit">
@@ -62,7 +62,7 @@
 <div class="index-sec1">
     <div class="sec1-left fl">
         <p class="p1">USER / CENTER</p>
-        <p class="p2">公告信息<b></b></p>
+        <p class="p2">通知信息<b></b></p>
         <ul>
             <li v-for="(item,index) in centerMenu" v-bind:key="index" :class="item.url=='../news/list.html'?'on':''" @click="jump(item.url)">
                 <i class="layui-icon">&#xe756;</i><span></span>{{item.name}}
@@ -83,18 +83,18 @@
                     </div>
                 </div>
 <!--                <button @click="jump('../news/add.html')" class="layui-btn layui-btn-lg btn-theme sub_backgroundColor" :style='{"padding":"0 15px","boxShadow":"0 0 8px rgba(0,0,0,0)","margin":"0 0 0 10px","borderColor":"#409EFF","color":"#333","borderRadius":"4px","borderWidth":"0","width":"auto","fontSize":"14px","borderStyle":"solid","height":"40px"}'>
-                    <i v-if="true" class="layui-icon">&#xe654;</i> 添加公告信息信息
+                    <i v-if="true" class="layui-icon">&#xe654;</i> 添加通知信息信息
                 </button>-->
             </div>
             <table class="layui-table" lay-skin="nob">
                 <thead>
                     <tr>
                         <!-- 当前表 -->
-                        <th>公告标题</th>
-                        <th>公告类型</th>
-                        <th>公告图片</th>
+                        <th>通知标题</th>
+                        <th>通知类型</th>
+                        <th>通知图片</th>
                         <th>添加时间</th>
-                        <th>公告详情</th>
+                        <th>通知详情</th>
                         <th>操作</th>
                     </tr>
                 </thead>
@@ -273,16 +273,16 @@
 
         // var id = http.getParam('id');
 
-        //公告类型的动态搜素
+        //通知类型的动态搜素
         $(document).on("click", ".thisTableType-search", function (e) {
             vue.searchForm.newsTypes = $(this).attr('index');
             pageList();
         });
 
 
-            //当前表的 公告类型 字段 字典表查询
+            //当前表的 通知类型 字段 字典表查询
             newsTypesSelect();
-           //当前表的 公告类型 字段 字典表查询方法
+           //当前表的 通知类型 字段 字典表查询方法
            function newsTypesSelect() {
                http.request("dictionary/page?page=1&limit=100&sort=&order=&dicCode=news_types", 'get', {}, function (res) {
                    if(res.code == 0){

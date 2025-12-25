@@ -18,7 +18,7 @@ import com.baomidou.mybatisplus.enums.FieldFill;
 import com.utils.DateUtil;
 
 
-//公告信息
+//通知信息
 @TableName("news")
 public class NewsEntity<T> implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -46,22 +46,22 @@ public class NewsEntity<T> implements Serializable {
     private Integer id;
 
 
-    //公告标题
-    @ColumnInfo(comment="公告标题",type="varchar(200)")
+    //通知标题
+    @ColumnInfo(comment="通知标题",type="varchar(200)")
     @TableField(value = "news_name")
 
     private String newsName;
 
 
-    //公告类型
-    @ColumnInfo(comment="公告类型",type="int(11)")
+    //通知类型
+    @ColumnInfo(comment="通知类型",type="int(11)")
     @TableField(value = "news_types")
 
     private Integer newsTypes;
 
 
-    //公告图片
-    @ColumnInfo(comment="公告图片",type="varchar(200)")
+    //通知图片
+    @ColumnInfo(comment="通知图片",type="varchar(200)")
     @TableField(value = "news_photo")
 
     private String newsPhoto;
@@ -76,8 +76,8 @@ public class NewsEntity<T> implements Serializable {
     private Date insertTime;
 
 
-    //公告详情
-    @ColumnInfo(comment="公告详情",type="longtext")
+    //通知详情
+    @ColumnInfo(comment="通知详情",type="longtext")
     @TableField(value = "news_content")
 
     private String newsContent;
@@ -102,32 +102,32 @@ public class NewsEntity<T> implements Serializable {
         this.id = id;
     }
 
-    //获取：公告标题
+    //获取：通知标题
     public String getNewsName() {
         return newsName;
     }
 
-    //设置：公告标题
+    //设置：通知标题
     public void setNewsName(String newsName) {
         this.newsName = newsName;
     }
 
-    //获取：公告类型
+    //获取：通知类型
     public Integer getNewsTypes() {
         return newsTypes;
     }
 
-    //设置：公告类型
+    //设置：通知类型
     public void setNewsTypes(Integer newsTypes) {
         this.newsTypes = newsTypes;
     }
 
-    //获取：公告图片
+    //获取：通知图片
     public String getNewsPhoto() {
         return newsPhoto;
     }
 
-    //设置：公告图片
+    //设置：通知图片
     public void setNewsPhoto(String newsPhoto) {
         this.newsPhoto = newsPhoto;
     }
@@ -142,12 +142,12 @@ public class NewsEntity<T> implements Serializable {
         this.insertTime = insertTime;
     }
 
-    //获取：公告详情
+    //获取：通知详情
     public String getNewsContent() {
         return newsContent;
     }
 
-    //设置：公告详情
+    //设置：通知详情
     public void setNewsContent(String newsContent) {
         this.newsContent = newsContent;
     }

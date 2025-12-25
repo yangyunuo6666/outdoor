@@ -1,4 +1,4 @@
-package com.config;
+package com.shiro;
 
 import com.entity.YonghuEntity;
 import com.service.YonghuService;

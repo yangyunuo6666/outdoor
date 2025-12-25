@@ -10,7 +10,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import java.io.Serializable;
 
 /**
- * 公告信息
+ * 通知信息
  * 手机端接口返回实体辅助类（主要作用去除一些不必要的字段）
  */
 @TableName("news")
@@ -22,15 +22,15 @@ public class NewsVO implements Serializable {
     @TableField(value = "id")
     private Integer id;
 
-    //公告标题
+    //通知标题
     @TableField(value = "news_name")
     private String newsName;
 
-    //公告类型
+    //通知类型
     @TableField(value = "news_types")
     private Integer newsTypes;
 
-    //公告图片
+    //通知图片
     @TableField(value = "news_photo")
     private String newsPhoto;
 
@@ -40,7 +40,7 @@ public class NewsVO implements Serializable {
     @TableField(value = "insert_time")
     private Date insertTime;
 
-    //公告详情
+    //通知详情
     @TableField(value = "news_content")
     private String newsContent;
 
@@ -61,32 +61,32 @@ public class NewsVO implements Serializable {
         this.id = id;
     }
 
-    //获取：公告标题
+    //获取：通知标题
     public String getNewsName() {
         return newsName;
     }
 
-    //设置：公告标题
+    //设置：通知标题
     public void setNewsName(String newsName) {
         this.newsName = newsName;
     }
 
-    //获取：公告类型
+    //获取：通知类型
     public Integer getNewsTypes() {
         return newsTypes;
     }
 
-    //设置：公告类型
+    //设置：通知类型
     public void setNewsTypes(Integer newsTypes) {
         this.newsTypes = newsTypes;
     }
 
-    //获取：公告图片
+    //获取：通知图片
     public String getNewsPhoto() {
         return newsPhoto;
     }
 
-    //设置：公告图片
+    //设置：通知图片
     public void setNewsPhoto(String newsPhoto) {
         this.newsPhoto = newsPhoto;
     }
@@ -101,12 +101,12 @@ public class NewsVO implements Serializable {
         this.insertTime = insertTime;
     }
 
-    //获取：公告详情
+    //获取：通知详情
     public String getNewsContent() {
         return newsContent;
     }
 
-    //设置：公告详情
+    //设置：通知详情
     public void setNewsContent(String newsContent) {
         this.newsContent = newsContent;
     }

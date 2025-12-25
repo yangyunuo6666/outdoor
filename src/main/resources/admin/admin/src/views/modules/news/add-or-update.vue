@@ -10,20 +10,20 @@
             <el-row>
                 <input id="updateId" name="id" type="hidden">
                <el-col :span="12">
-                   <el-form-item class="input" v-if="type!='info'"  label="公告标题" prop="newsName">
+                   <el-form-item class="input" v-if="type!='info'"  label="通知标题" prop="newsName">
                        <el-input v-model="ruleForm.newsName"
-                                 placeholder="公告标题" clearable  :readonly="ro.newsName"></el-input>
+                                 placeholder="通知标题" clearable  :readonly="ro.newsName"></el-input>
                    </el-form-item>
                    <div v-else-if="type=='info'">
-                       <el-form-item class="input" label="公告标题" prop="newsName">
+                       <el-form-item class="input" label="通知标题" prop="newsName">
                            <el-input v-model="ruleForm.newsName"
-                                     placeholder="公告标题" readonly></el-input>
+                                     placeholder="通知标题" readonly></el-input>
                        </el-form-item>
                    </div>
                </el-col>
                 <el-col :span="12">
-                    <el-form-item class="select" v-if="type!='info'"  label="公告类型" prop="newsTypes">
-                        <el-select v-model="ruleForm.newsTypes" :disabled="ro.newsTypes" placeholder="请选择公告类型">
+                    <el-form-item class="select" v-if="type!='info'"  label="通知类型" prop="newsTypes">
+                        <el-select v-model="ruleForm.newsTypes" :disabled="ro.newsTypes" placeholder="请选择通知类型">
                             <el-option
                                 v-for="(item,index) in newsTypesOptions"
                                 v-bind:key="item.codeIndex"
@@ -33,16 +33,16 @@
                         </el-select>
                     </el-form-item>
                     <div v-else-if="type=='info'">
-                        <el-form-item class="input" label="公告类型" prop="newsValue">
+                        <el-form-item class="input" label="通知类型" prop="newsValue">
                         <el-input v-model="ruleForm.newsValue"
-                            placeholder="公告类型" readonly></el-input>
+                            placeholder="通知类型" readonly></el-input>
                         </el-form-item>
                     </div>
                 </el-col>
                 <el-col :span="12">
-                    <el-form-item class="upload" v-if="type!='info' && !ro.newsPhoto" label="公告图片" prop="newsPhoto">
+                    <el-form-item class="upload" v-if="type!='info' && !ro.newsPhoto" label="通知图片" prop="newsPhoto">
                         <file-upload
-                            tip="点击上传公告图片"
+                            tip="点击上传通知图片"
                             action="file/upload"
                             :limit="3"
                             :multiple="true"
@@ -51,13 +51,13 @@
                         ></file-upload>
                     </el-form-item>
                     <div v-else>
-                        <el-form-item v-if="ruleForm.newsPhoto" label="公告图片" prop="newsPhoto">
+                        <el-form-item v-if="ruleForm.newsPhoto" label="通知图片" prop="newsPhoto">
                             <img style="margin-right:20px;" v-bind:key="index" v-for="(item,index) in (ruleForm.newsPhoto || '').split(',')" :src="$base.url+item" width="100" height="100">
                         </el-form-item>
                     </div>
                 </el-col>
                 <el-col :span="24">
-                    <el-form-item v-if="type!='info'"  label="公告详情" prop="newsContent">
+                    <el-form-item v-if="type!='info'"  label="通知详情" prop="newsContent">
                         <editor style="min-width: 200px; max-width: 600px;"
                                 v-model="ruleForm.newsContent"
                                 class="editor"
@@ -65,7 +65,7 @@
                         </editor>
                     </el-form-item>
                     <div v-else-if="type=='info'">
-                        <el-form-item v-if="ruleForm.newsContent" label="公告详情" prop="newsContent">
+                        <el-form-item v-if="ruleForm.newsContent" label="通知详情" prop="newsContent">
                             <span v-html="ruleForm.newsContent"></span>
                         </el-form-item>
                     </div>
@@ -110,23 +110,23 @@
                 newsTypesOptions : [],
                 rules: {
                    newsName: [
-                              { required: true, message: '公告标题不能为空', trigger: 'blur' },
+                              { required: true, message: '通知标题不能为空', trigger: 'blur' },
                           ],
                    newsTypes: [
-                              { required: true, message: '公告类型不能为空', trigger: 'blur' },
+                              { required: true, message: '通知类型不能为空', trigger: 'blur' },
                               {  pattern: /^[0-9]*$/,
                                   message: '只允许输入整数',
                                   trigger: 'blur'
                               }
                           ],
                    newsPhoto: [
-                              { required: true, message: '公告图片不能为空', trigger: 'blur' },
+                              { required: true, message: '通知图片不能为空', trigger: 'blur' },
                           ],
                    insertTime: [
                               { required: true, message: '添加时间不能为空', trigger: 'blur' },
                           ],
                    newsContent: [
-                              { required: true, message: '公告详情不能为空', trigger: 'blur' },
+                              { required: true, message: '通知详情不能为空', trigger: 'blur' },
                           ],
                 }
             };

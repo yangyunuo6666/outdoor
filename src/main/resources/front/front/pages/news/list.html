@@ -2,7 +2,7 @@
 <html>
 <head lang="en">
     <meta charset="utf-8">
-    <title>公告信息</title>
+    <title>通知信息</title>
     <meta name="keywords" content=""/>
     <meta name="description" content=""/>
     <meta name="renderer" content="webkit">
@@ -231,11 +231,11 @@
                         <a href="../home/home.html">首页</a>
                         <span>/</span>
                     </li>
-                    <li>公告信息</li>
+                    <li>通知信息</li>
                 </ul>
                 <form>
          
-                <input type="text" v-model="searchForm.newsName" placeholder="公告标题" autocomplete="off"
+                <input type="text" v-model="searchForm.newsName" placeholder="通知标题" autocomplete="off"
                        class="search-input">     
                                     <div style="display: flex;justify-content: space-evenly;align-items: center;">
                         <div id="btn-search" class="button-submit"><i class="layui-icon layui-icon-search"></i>搜索</div>
@@ -243,7 +243,7 @@
                     </div>
                 </form>
                 <div class="tags tags1">
-                    <h3>公告类型</h3>
+                    <h3>通知类型</h3>
                     <ul>
                         <li class="thisTableType-search">
                             <a :class='searchForm.newsTypes=="" || searchForm.newsTypes==null?"thisTableType-search-hover":""'>全部</a>
@@ -413,16 +413,16 @@
 
 
 
-        //公告类型的动态搜素
+        //通知类型的动态搜素
         $(document).on("click", ".thisTableType-search", function (e) {
             vue.searchForm.newsTypes = $(this).attr('index');
             pageList();
         });
 
 
-            //当前表的 公告类型 字段 字典表查询
+            //当前表的 通知类型 字段 字典表查询
             newsTypesSelect();
-                                   //当前表的 公告类型 字段 字典表查询方法
+                                   //当前表的 通知类型 字段 字典表查询方法
            function newsTypesSelect() {
                http.request("dictionary/page?page=1&limit=100&sort=&order=&dicCode=news_types", 'get', {}, function (res) {
                    if(res.code == 0){

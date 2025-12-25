@@ -13,7 +13,7 @@ import com.entity.NewsEntity;
 import com.service.NewsService;
 import com.entity.view.NewsView;
 
-//公告信息 服务实现类
+//通知信息 服务实现类
 @Service("newsService")
 @Transactional
 public class NewsServiceImpl extends ServiceImpl<NewsDao, NewsEntity> implements NewsService {

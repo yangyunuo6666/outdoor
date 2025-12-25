@@ -89,7 +89,7 @@ const routes = [{
     }
     ,{
         path: '/dictionaryNews',
-        name: '公告类型',
+        name: '通知类型',
         component: dictionaryNews
     }
     ,{
@@ -146,7 +146,7 @@ const routes = [{
       }
     ,{
         path: '/news',
-        name: '公告信息',
+        name: '通知信息',
         component: news
       }
     ,{

@@ -63,7 +63,7 @@ var indexNav = [
         url: './pages/liuyan/list.html'
     },
     {
-        name: '公告信息',
+        name: '通知信息',
         url: './pages/news/list.html'
     }
 

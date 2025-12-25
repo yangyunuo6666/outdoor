@@ -6,12 +6,12 @@
             <el-form :inline="true" :model="searchForm" class="form-content">
                 <el-row :gutter="20" class="slt" :style="{justifyContent:contents.searchBoxPosition=='1'?'flex-start':contents.searchBoxPosition=='2'?'center':'flex-end'}">
                  
-                     <el-form-item :label="contents.inputTitle == 1 ? '公告标题' : ''">
-                         <el-input prefix-icon="el-icon-search" v-model="searchForm.newsName" placeholder="公告标题" clearable></el-input>
+                     <el-form-item :label="contents.inputTitle == 1 ? '通知标题' : ''">
+                         <el-input prefix-icon="el-icon-search" v-model="searchForm.newsName" placeholder="通知标题" clearable></el-input>
                      </el-form-item>
          
-                     <el-form-item :label="contents.inputTitle == 1 ? '公告类型' : ''">
-                        <el-select v-model="searchForm.newsTypes" placeholder="请选择公告类型">
+                     <el-form-item :label="contents.inputTitle == 1 ? '通知类型' : ''">
+                        <el-select v-model="searchForm.newsTypes" placeholder="请选择通知类型">
                             <el-option label="=-请选择-=" value=""></el-option>
                             <el-option
                                v-for="(item,index) in newsTypesSelectSearch"
@@ -59,7 +59,7 @@
                            v-if="isAuth('news','导入导出')"
                            icon="el-icon-download"
                            href="https://localhost:8443/equipmentzulinxitong/upload/newsMuBan.xls"
-                        >批量导入公告信息数据模板</a>
+                        >批量导入通知信息数据模板</a>
                         &nbsp;
                         <el-upload
                                 v-if="isAuth('news','导入导出')"
@@ -72,7 +72,7 @@
                                     v-if="isAuth('news','导入导出')"
                                     type="success"
                                     icon="el-icon-upload2"
-                            >批量导入公告信息数据</el-button>
+                            >批量导入通知信息数据</el-button>
                         </el-upload>
                         &nbsp;
                         <!-- 导出excel -->
@@ -111,7 +111,7 @@
                     <el-table-column  :sortable="contents.tableSortable" :align="contents.tableAlign"
                                    prop="newsName"
                                    header-align="center"
-                                   label="公告标题">
+                                   label="通知标题">
                         <template slot-scope="scope">
                             {{scope.row.newsName}}
                         </template>
@@ -119,7 +119,7 @@
                     <el-table-column  :sortable="contents.tableSortable" :align="contents.tableAlign"
                                       prop="newsTypes"
                                       header-align="center"
-                                      label="公告类型">
+                                      label="通知类型">
                         <template slot-scope="scope">
                             {{scope.row.newsValue}}
                         </template>
@@ -127,7 +127,7 @@
                     <el-table-column :sortable="contents.tableSortable" :align="contents.tableAlign" prop="newsPhoto"
                                      header-align="center"
                                      width="200"
-                                     label="公告图片">
+                                     label="通知图片">
                         <template slot-scope="scope">
                             <div v-if="scope.row.newsPhoto">
                                 <img :src="$base.url+scope.row.newsPhoto" width="100" height="100">
@@ -259,9 +259,9 @@
             json_fields: {
                 //级联表字段
                 //本表字段
-                     '公告标题': "newsName",
-                     '公告类型': "newsValue",
-                     '公告图片': "newsPhoto",
+                     '通知标题': "newsName",
+                     '通知类型': "newsValue",
+                     '通知图片': "newsPhoto",
                      '添加时间': "insertTime",
             },
 
@@ -769,7 +769,7 @@
                 }).then(({data}) => {
                     if(data && data.code === 0){
                         _this.$message({
-                            message: "导入公告信息数据成功",
+                            message: "导入通知信息数据成功",
                             type: "success",
                             duration: 1500,
                             onClose: () => {

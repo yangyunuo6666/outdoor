@@ -1,14 +1,11 @@
-package com.config;
+package com.shiro;
 
 
 import com.entity.UsersEntity;
 import com.service.UsersService;
 import com.utils.MyMD5Utils;
 import org.apache.shiro.authc.*;
-import org.apache.shiro.authz.AuthorizationInfo;
-import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthenticatingRealm;
-import org.apache.shiro.subject.PrincipalCollection;
 import org.springframework.beans.factory.annotation.Autowired;
 
 public class UsersRealm extends AuthenticatingRealm {

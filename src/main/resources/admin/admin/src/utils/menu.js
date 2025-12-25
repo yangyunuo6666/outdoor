@@ -92,7 +92,7 @@ const menu = {
                             "删除",
                             "修改"
                         ],
-                        "menu":"公告类型管理",
+                        "menu":"通知类型管理",
                         "menuJump":"列表",
                         "tableName":"dictionaryNews"
                     }
@@ -152,12 +152,12 @@ const menu = {
                             "修改",
                             "删除"
                         ],
-                        "menu":"公告信息管理",
+                        "menu":"通知信息管理",
                         "menuJump":"列表",
                         "tableName":"news"
                     }
                 ],
-                "menu":"公告信息管理"
+                "menu":"通知信息管理"
             }
             ,{
                 "child":[

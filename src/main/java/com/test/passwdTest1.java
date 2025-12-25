@@ -59,7 +59,7 @@ public class passwdTest1 {
         };
 
         // 批量生成密文
-        System.out.println("===== 明文密码 → MD5加密密文（盐值：M2025D125140） =====");
+        System.out.println("===== 明文密码 → MD5加密密文 =====");
         for (String plainPwd : plainPasswords) {
             String encryptPwd = md5WithSalt(plainPwd);
             System.out.println("明文：" + plainPwd + " → 密文：" + encryptPwd);
