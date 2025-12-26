@@ -234,25 +234,25 @@
 
 
     .loginInBt {
-        width: 200px;
-        height: 290px;
-        line-height: 290px;
-        margin: -133px 0px 0px 405px;
+        width: 280px;
+        height: 40px;
+        line-height: 40px;
+        margin: 15px auto 0;
         padding: 0px 0px 0px 0px;
-        color: rgba(255, 254, 254, 1);
+        color: rgba(255, 254, 254, 0.7);
         font-size: 26px;
-        border-radius: 50% 0px 0px 50%;
         border-width: 3px;
         border-style: solid;
         border-color: rgba(255, 255, 255, 1);
-        background-color: var(--publicMainColor);
-        box-shadow: 0px 0px 0px 20px var(--publicSubColor);
+        background-color: rgba(149, 198, 163, 0.7);/*var(--publicSubColor)*/
+        //box-shadow: 0px 0px 0px 20px rgba(141, 210, 238, 0.7);/*var(--publicMainColor)*/
     }
     .register {
+       //position: absolute;
         width: 90px;
         height: 26px;
         line-height: 26px;
-        margin: -60px 0px 0px 0px;
+        margin: 0;
         padding: 0;
         color: rgba(0, 0, 0, 1);
         font-size: 14px;
@@ -263,6 +263,7 @@
         background-color: rgba(255, 215, 0, 0);
         box-shadow: 0 0 6px rgba(255,0,0,0);
         cursor: pointer;
+        //text-align: left;
     }
     .reset {
         width: auto;
@@ -283,19 +284,19 @@
 
     .left {
         position: absolute;
-        left: 0;
-        top: 0;
+        top: 50%;
+        right: 50%;
+        transform: translate(-50%, -50%);
         box-sizing: border-box;
-        width: 640px;
-        height: 330px;
-        margin: 30px 0px 0px 0px;
+        width: 440px;
+        height: 350px;
         padding: 0px 0px 0px 0px;
         border-radius: 0;
         border-width: 15px;
         border-style: solid;
         border-color: var(--publicMainColor);
-        background-color: rgba(255, 255, 255, 1);
-        box-shadow: 0px 0px 0px 15px rgba(255,255,255, 0.6);
+        background-color: rgba(255, 255, 255, 0.7);
+        box-shadow: 0px 0px 0px 15px rgba(255,255,255, 0.3);
 
     .login-form {
         background-color: transparent;
@@ -306,6 +307,8 @@
         display: flex;
         position: initial;
         justify-content: center;
+        align-items: center;
+        text-align: center;
         flex-direction: column;
     }
 
@@ -314,11 +317,14 @@
         font-size: 24px;
 
     .title {
-        width: 580px;
-        line-height: 0;
-        margin: -10px 0px 110px -10px;
+        width: 100%;
+        line-height: 1.5;
+        margin: 0 0 20px 0;
+        border-bottom: 1px solid #dbdbdb;
+        padding-bottom: 20px;
         padding: 5px;
         color: black;
+        text-align: center;
         font-size: 24px;
         border-radius: 0;
         border-width: 0;
@@ -418,13 +424,13 @@
           border: 0px;
           -webkit-appearance: none;
           padding: 0 15px 0 30px;
-          color: #fff;
+          color: rgba(255, 255, 255, 0.8);
           height: 40px;
 
-          width: 230px;
-          height: 36px;
-          line-height: 36px;
-          margin: 0px 0px -10px 50px;
+          width: 280px;
+          height: 40px;
+          line-height: 40px;
+          margin: 0 auto;
           padding: 0px 0px 0px 60px;
           color: rgba(0, 0, 0, 1);
           font-size: 16px;
@@ -432,7 +438,7 @@
           border-width: 0px 0px 2px 0px;
           border-style: solid;
           border-color: rgba(255, 215, 0, 1);
-          background-color: rgba(255, 255, 255, 1);
+          background-color: rgba(255, 255, 255, 0.7);
           box-shadow: 0 0 0px rgba(193, 148, 99, 1);
       }
     }
@@ -510,12 +516,14 @@
           font-size: 14px;
           color: #999;
           margin: 0 !important;
-          display: flex;
+          //display: flex;
+          position: relative;
+          justify-content: center;
 
     .register {
-    // float: left;
-    // width: 50%;
-        text-align: center;
+      text-align: center;
+      color: #666;
+      text-decoration: underline;
     }
 
     .reset {

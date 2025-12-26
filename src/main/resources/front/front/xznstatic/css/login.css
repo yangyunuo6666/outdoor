@@ -28,8 +28,11 @@ html, body {
     padding: 20px 0;
     text-align: center;
     z-index: 10;
+    /* background: rgba(255, 255, 255, 0.5);*/
     background: #fff;
 }
+
+
 
 .msg-warn {
     position: relative;
@@ -46,6 +49,7 @@ html, body {
 .login form {
     top: 18%;
     border: 1px solid #dbdbdb;
+    background-color: rgba(255, 255, 255, 0.7) !important;/*background: rgba(255, 255, 255, 0.3);*/
     width: 440px;
     height: 350px;
 }
@@ -54,6 +58,32 @@ html, body {
     width: 480px;
     height: 490px;
     background: #fff;
+    /*background: rgba(255, 255, 255, 0.3);*/
+}
+
+/* 3. 新增：覆盖后端动态生成的main_backgroundColor内联背景色登录按钮 */
+.login form .main_backgroundColor {
+    background-color: rgba(149, 198, 163, 0.8) !important; /* 和登录表单同透明度 */
+}
+
+/* 3. 新增：覆盖后端动态生成的form-item内联背景色（解决表单项不透明） */
+/*.login form .form-item {*/
+/*    background-color: rgba(255, 255, 255, 0.21) !important; !* 和登录表单同透明度 *!*/
+/*}*/
+
+.login form input[type="text"], .login form input[type="text"] {
+    border: 1px solid #dbdbdb;
+    font-size: 14px;
+    padding-left: 10px;
+    background-color: rgba(255, 255, 255, 0.5) !important;
+}
+
+
+.login form input[type="password"], .login form input[type="password"] {
+    border: 1px solid #dbdbdb;
+    font-size: 14px;
+    padding-left: 10px;
+    background-color: rgba(255, 255, 255, 0.5) !important;
 }
 
 .reg form h1, .login form h1 {
@@ -77,14 +107,17 @@ html, body {
     border-radius: 3px;
 }
 
+
 .reg form input[type="text"], .login form input[type="text"] {
     border: 1px solid #dbdbdb;
     font-size: 14px;
     padding-left: 10px;
 }
 
+
 .reg form input[type="password"], .login form input[type="password"] {
     border: 1px solid #dbdbdb;
+    /*background-color: rgba(255, 255, 255, 0.5) !important;*/
     font-size: 14px;
     padding-left: 10px;
 }
