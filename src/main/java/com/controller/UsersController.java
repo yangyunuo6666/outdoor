@@ -99,17 +99,21 @@ public class UsersController {
 	@ApiOperation(value = "修改密码")
 	@GetMapping(value = "/updatePassword")
 	public R updatePassword(String  oldPassword, String  newPassword, HttpServletRequest request) {
+		System.out.println("oldpasswd:"+oldPassword+"  md5:"+MyMD5Utils.md5WithSalt(oldPassword));
 		UsersEntity users = usersService.selectById((Integer)request.getSession().getAttribute("userId"));
+
+		String NEWpassword = Mymd5Utils.md5WithSalt(newPassword);
+		String OLDpassword = Mymd5Utils.md5WithSalt(oldPassword);
 		if(newPassword == null&& !newPassword.trim().isEmpty()){
 			return R.error("新密码不能为空") ;
 		}
-		if(!MyMD5Utils.md5WithSalt(oldPassword).equals(users.getPassword())){
+		if(!OLDpassword.equals(users.getPassword())){
 			return R.error("原密码输入错误");
 		}
-		if(MyMD5Utils.md5WithSalt(newPassword).equals(users.getPassword())){
+		if(NEWpassword.equals(users.getPassword())){
 			return R.error("新密码不能和原密码一致") ;
 		}
-		users.setPassword(MyMD5Utils.md5WithSalt(newPassword));
+		users.setPassword(NEWpassword);
 
 		usersService.updateById(users);
 		return R.ok();

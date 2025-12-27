@@ -6,47 +6,47 @@
             <el-form :inline="true" :model="searchForm" class="form-content">
                 <el-row :gutter="20" class="slt" :style="{justifyContent:contents.searchBoxPosition=='1'?'flex-start':contents.searchBoxPosition=='2'?'center':'flex-end'}">
                          
-                     <el-form-item :label="contents.inputTitle == 1 ? '设备名称' : ''">
-                         <el-input prefix-icon="el-icon-search" v-model="searchForm.equipmentName" placeholder="设备名称" clearable></el-input>
-                     </el-form-item>
-                 
-                     <el-form-item :label="contents.inputTitle == 1 ? '设备类型' : ''">
-                        <el-select v-model="searchForm.equipmentTypes" placeholder="请选择设备类型">
-                            <el-option label="=-请选择-=" value=""></el-option>
-                            <el-option
-                               v-for="(item,index) in equipmentTypesSelectSearch"
-                               v-bind:key="index"
-                               :label="item.indexName"
-                               :value="item.codeIndex">
-                            <!--lable是要展示的名称-->
-                            <!--value是值-->
-                            </el-option>
-                        </el-select>
-                     </el-form-item>
+<!--                     <el-form-item :label="contents.inputTitle == 1 ? '设备名称' : ''">-->
+<!--                         <el-input prefix-icon="el-icon-search" v-model="searchForm.equipmentName" placeholder="设备名称" clearable></el-input>-->
+<!--                     </el-form-item>-->
+<!--                 -->
+<!--                     <el-form-item :label="contents.inputTitle == 1 ? '设备类型' : ''">-->
+<!--                        <el-select v-model="searchForm.equipmentTypes" placeholder="请选择设备类型">-->
+<!--                            <el-option label="=-请选择-=" value=""></el-option>-->
+<!--                            <el-option-->
+<!--                               v-for="(item,index) in equipmentTypesSelectSearch"-->
+<!--                               v-bind:key="index"-->
+<!--                               :label="item.indexName"-->
+<!--                               :value="item.codeIndex">-->
+<!--                            &lt;!&ndash;lable是要展示的名称&ndash;&gt;-->
+<!--                            &lt;!&ndash;value是值&ndash;&gt;-->
+<!--                            </el-option>-->
+<!--                        </el-select>-->
+<!--                     </el-form-item>-->
 
                                                                 
 
 
-                    <el-form-item>
-                        <el-button type="success" @click="search()">查询<i class="el-icon-search el-icon--right"/></el-button>
-                    </el-form-item>
+<!--                    <el-form-item>-->
+<!--                        <el-button type="success" @click="search()">查询<i class="el-icon-search el-icon&#45;&#45;right"/></el-button>-->
+<!--                    </el-form-item>-->
                 </el-row>
                 <el-row class="ad" :style="{justifyContent:contents.btnAdAllBoxPosition=='1'?'flex-start':contents.btnAdAllBoxPosition=='2'?'center':'flex-end'}">
                     <el-form-item>
-                        <el-button
-                                v-if="isAuth('equipment','新增')"
-                                type="success"
-                                icon="el-icon-plus"
-                                @click="addOrUpdateHandler()"
-                        >新增</el-button>
-                        &nbsp;
-                        <el-button
-                                v-if="isAuth('equipment','删除')"
-                                :disabled="dataListSelections.length <= 0"
-                                type="danger"
-                                icon="el-icon-delete"
-                                @click="deleteHandler()"
-                        >删除</el-button>
+<!--                        <el-button-->
+<!--                                v-if="isAuth('equipment','新增')"-->
+<!--                                type="success"-->
+<!--                                icon="el-icon-plus"-->
+<!--                                @click="addOrUpdateHandler()"-->
+<!--                        >新增</el-button>-->
+<!--                        &nbsp;-->
+<!--                        <el-button-->
+<!--                                v-if="isAuth('equipment','删除')"-->
+<!--                                :disabled="dataListSelections.length <= 0"-->
+<!--                                type="danger"-->
+<!--                                icon="el-icon-delete"-->
+<!--                                @click="deleteHandler()"-->
+<!--                        >删除</el-button>-->
                         &nbsp;
                         <el-button
                                 v-if="isAuth('equipment','报表')"
@@ -136,14 +136,14 @@
                             <div v-else>无图片</div>
                         </template>
                     </el-table-column>
-                    <el-table-column  :sortable="contents.tableSortable" :align="contents.tableAlign"
-                                      prop="equipmentTypes"
-                                      header-align="center"
-                                      label="设备类型">
-                        <template slot-scope="scope">
-                            {{scope.row.equipmentValue}}
-                        </template>
-                    </el-table-column>
+<!--                    <el-table-column  :sortable="contents.tableSortable" :align="contents.tableAlign"-->
+<!--                                      prop="equipmentTypes"-->
+<!--                                      header-align="center"-->
+<!--                                      label="设备类型">-->
+<!--                        <template slot-scope="scope">-->
+<!--                            {{scope.row.equipmentValue}}-->
+<!--                        </template>-->
+<!--                    </el-table-column>-->
                     <el-table-column  :sortable="contents.tableSortable" :align="contents.tableAlign"
                                       prop="equipmentKucunNumber"
                                       header-align="center"
@@ -153,14 +153,14 @@
                         </template>
                     </el-table-column>
 
-                    <el-table-column  :sortable="contents.tableSortable" :align="contents.tableAlign"
-                                   prop="equipmentNewMoney"
-                                   header-align="center"
-                                   label="租赁价格/h">
-                        <template slot-scope="scope">
-                            {{scope.row.equipmentNewMoney}}
-                        </template>
-                    </el-table-column>
+<!--                    <el-table-column  :sortable="contents.tableSortable" :align="contents.tableAlign"-->
+<!--                                   prop="equipmentNewMoney"-->
+<!--                                   header-align="center"-->
+<!--                                   label="租赁价格/h">-->
+<!--                        <template slot-scope="scope">-->
+<!--                            {{scope.row.equipmentNewMoney}}-->
+<!--                        </template>-->
+<!--                    </el-table-column>-->
                     <el-table-column  :sortable="contents.tableSortable" :align="contents.tableAlign"
                                       prop="equipmentClicknum"
                                       header-align="center"
@@ -169,23 +169,23 @@
                             {{scope.row.equipmentClicknum}}
                         </template>
                     </el-table-column>
-                    <el-table-column  :sortable="contents.tableSortable" :align="contents.tableAlign"
-                                      prop="shangxiaTypes"
-                                      header-align="center"
-                                      label="是否上架">
-                        <template slot-scope="scope">
-                            {{scope.row.shangxiaValue}}
-                        </template>
-                    </el-table-column>
+<!--                    <el-table-column  :sortable="contents.tableSortable" :align="contents.tableAlign"-->
+<!--                                      prop="shangxiaTypes"-->
+<!--                                      header-align="center"-->
+<!--                                      label="是否上架">-->
+<!--                        <template slot-scope="scope">-->
+<!--                            {{scope.row.shangxiaValue}}-->
+<!--                        </template>-->
+<!--                    </el-table-column>-->
 
-                    <el-table-column  :sortable="contents.tableSortable" :align="contents.tableAlign"
-                                   prop="insertTime"
-                                   header-align="center"
-                                   label="录入时间">
-                        <template slot-scope="scope">
-                            {{scope.row.insertTime}}
-                        </template>
-                    </el-table-column>
+<!--                    <el-table-column  :sortable="contents.tableSortable" :align="contents.tableAlign"-->
+<!--                                   prop="insertTime"-->
+<!--                                   header-align="center"-->
+<!--                                   label="录入时间">-->
+<!--                        <template slot-scope="scope">-->
+<!--                            {{scope.row.insertTime}}-->
+<!--                        </template>-->
+<!--                    </el-table-column>-->
 
                     <el-table-column width="300" :align="contents.tableAlign"
                                      header-align="center"
@@ -194,9 +194,9 @@
                             <el-button v-if="sessionTable=='false'" type="primary" size="mini" @click="wuyong(scope.row.id)">无用按钮</el-button>
                             <el-button v-if="sessionTable=='false'" type="success" icon="el-icon-printer" size="mini" @click="dayinOpen(scope.row)">打印</el-button>
                             <el-button v-if="isAuth('equipment','查看')" type="success" icon="el-icon-tickets" size="mini" @click="addOrUpdateHandler(scope.row.id,'info')">详情</el-button>
-                            <el-button v-if="isAuth('equipment','修改')" type="primary" icon="el-icon-edit" size="mini" @click="addOrUpdateHandler(scope.row.id)">修改</el-button>
-                            <el-button v-if="isAuth('equipment','删除')" type="danger" icon="el-icon-delete" size="mini" @click="deleteHandler(scope.row.id)">删除</el-button>
-                            <el-button v-if="isAuth('equipment','修改')" type="primary" icon="el-icon-tickets" size="mini" @click="shangxia(scope.row.id,scope.row.shangxiaTypes)">{{scope.row.shangxiaTypes == 1?'下架':'上架'}}</el-button>
+<!--                            <el-button v-if="isAuth('equipment','修改')" type="primary" icon="el-icon-edit" size="mini" @click="addOrUpdateHandler(scope.row.id)">修改</el-button>-->
+<!--                            <el-button v-if="isAuth('equipment','删除')" type="danger" icon="el-icon-delete" size="mini" @click="deleteHandler(scope.row.id)">删除</el-button>-->
+<!--                            <el-button v-if="isAuth('equipment','修改')" type="primary" icon="el-icon-tickets" size="mini" @click="shangxia(scope.row.id,scope.row.shangxiaTypes)">{{scope.row.shangxiaTypes == 1?'下架':'上架'}}</el-button>-->
                             <!--<el-button v-if="isAuth('equipment','修改')" type="primary" icon="el-icon-add-location" size="mini" @click="plusEquipmentKucunNumber(scope.row.id,scope.row.equipmentKucunNumber)">增加设备库存</el-button>-->
                             <!--<el-button v-if="isAuth('equipment','修改')" type="primary" icon="el-icon-delete-location" size="mini" @click="reduceEquipmentKucunNumber(scope.row.id,scope.row.equipmentKucunNumber)">减少设备库存</el-button>-->
 

@@ -92,7 +92,7 @@ export default {
           this.user.password = this.ruleForm.newpassword;
           this.user.mima = this.ruleForm.newpassword;
           this.$http({
-            url: `${this.$storage.get("sessionTable")}/update`,
+            url: `${this.$storage.get("sessionTable")}/updatePassword`,
             method: "post",
             data: this.user
           }).then(({ data }) => {
