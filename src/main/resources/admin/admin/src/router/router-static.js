@@ -8,7 +8,7 @@ Vue.use(VueRouter);
     return VueRouterPush.call(this, to).catch(err => err)
     }
 //1.创建组件
-import Index from '@/views/index'
+ import Index from '@/views/index'
 import Home from '@/views/home'
 import Login from '@/views/login'
 import NotFound from '@/views/404'

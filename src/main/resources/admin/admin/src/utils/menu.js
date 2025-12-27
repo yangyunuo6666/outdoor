@@ -20,69 +20,21 @@ const menu = {
                 "menu":"管理员管理"
             }
 			,{
-			    "child":[
-			        {
-			            "buttons":[
-			                "查看",
-			                "新增",
-			                "修改",
-			                "删除"
-			            ],
-			            "menu":"用户管理",
-			            "menuJump":"列表",
-			            "tableName":"yonghu"
-			        }
-			    ],
-			    "menu":"用户管理"
-			}
-			,{
-			    "child":[
-			        {
-			            "buttons":[
-			                "查看",
-			                "新增",
-			                "修改",
-			                "删除"
-			            ],
-			            "menu":"设备管理",
-			            "menuJump":"列表",
-			            "tableName":"equipment"
-			        }
-			        ,
-			        {
-			            "buttons":[
-			                "查看",
-			                "修改",
-			                "删除"
-			            ],
-			            "menu":"设备评价管理",
-			            "menuJump":"列表",
-			            "tableName":"equipmentCommentback"
-			        }
-			        ,
-			        {
-			            "buttons":[
-			                "查看",
-			                "删除"
-			            ],
-			            "menu":"设备收藏管理",
-			            "menuJump":"列表",
-			            "tableName":"equipmentCollection"
-			        }
-			        ,
-			        {
-			            "buttons":[
-			                "订单",
-			                "查看",
-			                "删除"
-			            ],
-			            "menu":"设备订单管理",
-			            "menuJump":"列表",
-			            "tableName":"equipmentOrder"
-			        }
-			    ],
-			    "menu":"设备管理"
-			}
+                "child":[
+                    {
+                        "buttons":[
+                            "查看",
+                            "新增",
+                            "修改",
+                            "删除"
+                        ],
+                        "menu":"用户管理",
+                        "menuJump":"列表",
+                        "tableName":"yonghu"
+                    }
+                ],
+                "menu":"用户管理"
+            }
             ,{
                 "child":[
                     {
@@ -109,7 +61,84 @@ const menu = {
                         "tableName":"dictionaryEquipment"
                     }
                 ],
-                "menu":"基础数据管理"
+                "menu":"元数据管理"
+            },
+            {
+                "child":[
+                    {
+                        "buttons":[
+                            "查看",
+                            "新增",
+                            "修改",
+                            "删除"
+                        ],
+                        "menu":"设备管理",
+                        "menuJump":"列表",
+                        "tableName":"equipment"
+                    }
+                    ,
+                    {
+                        "buttons":[
+                            "查看",
+                            "修改",
+                            "删除"
+                        ],
+                        "menu":"设备评价管理",
+                        "menuJump":"列表",
+                        "tableName":"equipmentCommentback"
+                    }
+                    ,
+                    {
+                        "buttons":[
+                            "查看",
+                            "删除"
+                        ],
+                        "menu":"设备收藏管理",
+                        "menuJump":"列表",
+                        "tableName":"equipmentCollection"
+                    }
+                    ,
+                    {
+                        "buttons":[
+                            "查看"
+                        ],
+                        "menu":"设备库存预警",
+                        "menuJump":"列表",
+                        "tableName":"equipment"
+                    }
+                ],
+                "menu":"设备管理"
+            },
+            {
+                "child":[
+                    {
+                        "buttons":[
+                            "订单",
+                            "查看",
+                            "删除"
+                        ],
+                        "menu":"设备订单管理",
+                        "menuJump":"列表",
+                        "tableName":"equipmentOrder"
+                    }
+                ],
+                "menu":"订单管理"
+            }
+            ,{
+                "child":[
+                    {
+                        "buttons":[
+                            "查看",
+                            "新增",
+                            "修改",
+                            "删除"
+                        ],
+                        "menu":"通知信息管理",
+                        "menuJump":"列表",
+                        "tableName":"news"
+                    }
+                ],
+                "menu":"通知信息管理"
             }
             ,{
                 "child":[
@@ -152,28 +181,12 @@ const menu = {
                             "修改",
                             "删除"
                         ],
-                        "menu":"通知信息管理",
-                        "menuJump":"列表",
-                        "tableName":"news"
-                    }
-                ],
-                "menu":"通知信息管理"
-            }
-            ,{
-                "child":[
-                    {
-                        "buttons":[
-                            "查看",
-                            "新增",
-                            "修改",
-                            "删除"
-                        ],
                         "menu":"轮播图管理",
                         "menuJump":"列表",
                         "tableName":"config"
                     }
                 ],
-                "menu":"轮播图信息"
+                "menu":"轮播图管理"
             }
         ],
         "frontMenu":[],

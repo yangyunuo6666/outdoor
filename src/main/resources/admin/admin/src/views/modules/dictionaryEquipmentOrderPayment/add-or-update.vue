@@ -1,4 +1,4 @@
-<template>
+  <template>
     <div class="addEdit-block">
         <el-form
                 class="detail-form-content"
