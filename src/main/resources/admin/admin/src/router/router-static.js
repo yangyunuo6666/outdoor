@@ -38,6 +38,7 @@ import huanyuan from '@/views/modules/databaseBackup/huanyuan'
     import dictionaryEquipmentCollection from '@/views/modules/dictionaryEquipmentCollection/list'
     import dictionaryEquipmentOrder from '@/views/modules/dictionaryEquipmentOrder/list'
     import dictionaryEquipmentOrderPayment from '@/views/modules/dictionaryEquipmentOrderPayment/list'
+    import equipmentStockWarningController from '@/views/modules/equipment/stock-warning-list'
 
 
 
@@ -127,7 +128,11 @@ const routes = [{
         name: '轮播图',
         component: config
     }
-
+    ,{
+            path: '/equipmentStockWarningController',
+            name: '设备库存预警',
+            component: equipmentStockWarningController
+        }
 
     ,{
         path: '/dictionary',

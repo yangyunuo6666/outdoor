@@ -100,11 +100,15 @@ const menu = {
                     ,
                     {
                         "buttons":[
-                            "查看"
+                            "查看",
+                            "新增",
+                            "修改",
+                            "删除"
                         ],
                         "menu":"设备库存预警",
-                        "menuJump":"列表",
-                        "tableName":"equipment"
+                        "menuJump":"equipmentStockWarningController",
+                        "tableName":"equipment",
+                        "routePath":"/equipmentStockWarningController"
                     }
                 ],
                 "menu":"设备管理"

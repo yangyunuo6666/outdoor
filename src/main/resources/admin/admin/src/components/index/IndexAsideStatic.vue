@@ -20,7 +20,7 @@
 				<i v-if="true" class="el-icon-menu" :class="icons[index]" />
 				<span>{{ menu.menu }}</span>
             </template>
-            <el-menu-item v-for=" (child,sort) in menu.child" :key="sort" :index="(index+2)+'-'+sort" @click="menuHandler(child.tableName)">{{ child.menu }}</el-menu-item>
+            <el-menu-item v-for=" (child,sort) in menu.child" :key="sort" :index="(index+2)+'-'+sort" @click="child.routePath ? $router.push(child.routePath) : menuHandler(child.tableName)">{{ child.menu }}</el-menu-item>
           </el-submenu>
         </el-menu>
       </div>
